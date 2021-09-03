@@ -7,9 +7,11 @@
 
 # Step
 
-1.将models下slstm文件放在fairseq/fairseq/models下
+1.git clone [fairseq](https://github.com/pytorch/fairseq)
 
-2.配置fairseq
+2.将models下slstm文件夹放在fairseq/fairseq/models下
+
+3.pip install 配置环境 
 
 # 使用模型
 
