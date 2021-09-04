@@ -24,7 +24,7 @@ print(sent_ids)# 4450, 3378, 3, 2375
 
 list_special_token=[0] #bos
 for id_ in sent_ids:
-    list_special_token.append(id_ + 4)   # bos pad eos unk 4,......,30004, mask
+    list_special_token.append(id_ + 4)   # bos pad eos unk 4,......,30003, mask
 list_special_token.append(2) #eos
 
 print(list_special_token)# 0, 4454, 3382, 7, 2379, 2
