@@ -108,6 +108,7 @@ def train(args, train_dataset, model, tokenizer):
     tr_loss, logging_loss = 0.0, 0.0
     model.zero_grad()
     seed_everything(args.seed)  # Added here for reproductibility (even between python 2 and 3)
+    best_vaild = 0
     for _ in range(int(args.num_train_epochs)):
         pbar = ProgressBar(n_total=len(train_dataloader), desc='Training')
         for step, batch in enumerate(train_dataloader):
@@ -161,11 +162,11 @@ def train(args, train_dataset, model, tokenizer):
                 model.zero_grad()
                 global_step += 1
 
-                if args.local_rank in [-1, 0] and args.logging_steps > 0 and global_step % args.logging_steps == 0:
-                    print(" ")
-                    # Log metrics
-                    if args.local_rank == -1:  # Only evaluate when single GPU otherwise metrics may not average well
-                        evaluate(args, model, tokenizer)
+                # if args.local_rank in [-1, 0] and args.logging_steps > 0 and global_step % args.logging_steps == 0:
+                #     print(" ")
+                #     # Log metrics
+                #     if args.local_rank == -1:  # Only evaluate when single GPU otherwise metrics may not average well
+                #         results = evaluate(args, model, tokenizer)
                 ###TODO SAVE models
                 # if args.local_rank in [-1, 0] and args.save_steps > 0 and global_step % args.save_steps == 0:
                 #     # Save model checkpoint
@@ -181,6 +182,10 @@ def train(args, train_dataset, model, tokenizer):
         print(" ")
         if 'cuda' in str(args.device):
             torch.cuda.empty_cache()
+        results = evaluate(args, model, tokenizer)
+        if results['acc'] >best_vaild:
+            logger.info("********Best Eval results {} ********".format(str(results['acc'])))
+            best_vaild =results['acc'] 
     return global_step, tr_loss / global_step
 
 
@@ -201,7 +206,7 @@ def evaluate(args, model, tokenizer, prefix=""):
                                      collate_fn=xlnet_collate_fn if args.model_type in ['xlnet'] else collate_fn)
 
         # Eval!
-        logger.info("********* Running evaluation {} ********".format(prefix))
+        # logger.info("********* Running evaluation {} ********".format(prefix))
         eval_loss = 0.0
         nb_eval_steps = 0
         preds = None
@@ -240,11 +245,11 @@ def evaluate(args, model, tokenizer, prefix=""):
             preds = np.squeeze(preds)
         result = compute_metrics(eval_task, preds, out_label_ids)
         results.update(result)
-        logger.info("  Num examples = %d", len(eval_dataset))
-        logger.info("  Batch size = %d", args.eval_batch_size)
-        logger.info("******** Eval results {} ********".format(prefix))
-        for key in sorted(result.keys()):
-            logger.info(" dev: %s = %s", key, str(result[key]))
+        # logger.info("  Num examples = %d", len(eval_dataset))
+        # logger.info("  Batch size = %d", args.eval_batch_size)
+        # logger.info("******** Eval results {} ********".format(prefix))
+        # for key in sorted(result.keys()):
+        #     logger.info(" dev: %s = %s", key, str(result[key]))
     return results
 
 
@@ -341,7 +346,7 @@ def load_and_cache_examples(args, task, tokenizer, data_type='train'):
         str(args.max_seq_length),
         str(task)))
     if os.path.exists(cached_features_file):
-        logger.info("Loading features from cached file %s", cached_features_file)
+        # logger.info("Loading features from cached file %s", cached_features_file)
         features = torch.load(cached_features_file)
     else:
         logger.info("Creating features from dataset file at %s", args.data_dir)
@@ -541,14 +546,14 @@ def main():
     tokenizer.Load('/nfs/users/wangyile/sentencepiece/build/src/giga_wiki_news_cn_nospecial.model')
 
 
-    slstm = SlstmModel.from_pretrained('/nfs/users/wangyile/fairseq/fairseq/models/slstm/cn-wiki/slstm1792_ln-003_posinput-dp0/', checkpoint_file='checkpoint50.pt')
+    slstm = SlstmModel.from_pretrained('/nfs/users/wangyile/fairseq/fairseq/models/slstm/cn-wiki/slstm1792_ln-003_posinput-dp0/', checkpoint_file='checkpoint60.pt')
     model = slstm.model
     if args.task_name=='tnews':
         model.register_classification_head('tnews',num_classes=15)
     elif args.task_name=='iflytek':
         model.register_classification_head('iflytek',num_classes=119)
     elif args.task_name=='wsc':
-         model.register_classification_head('wsc',num_classes=2)
+         model.register_classification_head('wsc',num_classes=2,use_dense=False)
     else:
         print('no register_classification_head')
 

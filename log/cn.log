@@ -1,0 +1,750 @@
+2021-08-26 15:48:04 | INFO | fairseq.distributed.utils | distributed init (rank 2): env://
+2021-08-26 15:48:04 | INFO | fairseq.distributed.utils | distributed init (rank 1): env://
+2021-08-26 15:48:04 | INFO | fairseq.distributed.utils | distributed init (rank 6): env://
+2021-08-26 15:48:04 | INFO | fairseq.distributed.utils | distributed init (rank 5): env://
+2021-08-26 15:48:04 | INFO | fairseq.distributed.utils | distributed init (rank 7): env://
+2021-08-26 15:48:04 | INFO | fairseq.distributed.utils | distributed init (rank 0): env://
+2021-08-26 15:48:04 | INFO | fairseq.distributed.utils | distributed init (rank 3): env://
+2021-08-26 15:48:04 | INFO | fairseq.distributed.utils | distributed init (rank 4): env://
+2021-08-26 15:48:04 | INFO | root | Added key: store_based_barrier_key:1 to store for rank: 3
+2021-08-26 15:48:04 | INFO | root | Added key: store_based_barrier_key:1 to store for rank: 7
+2021-08-26 15:48:04 | INFO | root | Added key: store_based_barrier_key:1 to store for rank: 4
+2021-08-26 15:48:05 | INFO | root | Added key: store_based_barrier_key:1 to store for rank: 1
+2021-08-26 15:48:05 | INFO | root | Added key: store_based_barrier_key:1 to store for rank: 2
+2021-08-26 15:48:05 | INFO | root | Added key: store_based_barrier_key:1 to store for rank: 6
+2021-08-26 15:48:05 | INFO | root | Added key: store_based_barrier_key:1 to store for rank: 5
+2021-08-26 15:48:05 | INFO | root | Added key: store_based_barrier_key:1 to store for rank: 0
+2021-08-26 15:48:05 | INFO | fairseq.distributed.utils | initialized host JX-ZY-GPU12 as rank 0
+2021-08-26 15:48:05 | INFO | fairseq.distributed.utils | initialized host JX-ZY-GPU12 as rank 6
+2021-08-26 15:48:05 | INFO | fairseq.distributed.utils | initialized host JX-ZY-GPU12 as rank 4
+2021-08-26 15:48:05 | INFO | fairseq.distributed.utils | initialized host JX-ZY-GPU12 as rank 5
+2021-08-26 15:48:05 | INFO | fairseq.distributed.utils | initialized host JX-ZY-GPU12 as rank 7
+2021-08-26 15:48:05 | INFO | fairseq.distributed.utils | initialized host JX-ZY-GPU12 as rank 3
+2021-08-26 15:48:05 | INFO | fairseq.distributed.utils | initialized host JX-ZY-GPU12 as rank 1
+2021-08-26 15:48:05 | INFO | fairseq.distributed.utils | initialized host JX-ZY-GPU12 as rank 2
+2021-08-26 15:48:15 | INFO | fairseq_cli.train | {'_name': None, 'common': {'_name': None, 'no_progress_bar': False, 'log_interval': 5000, 'log_format': 'simple', 'log_file': None, 'tensorboard_logdir': './cn-wiki/slstm1792_ln-003_posinput-dp0', 'wandb_project': None, 'azureml_logging': False, 'seed': 1, 'cpu': False, 'tpu': False, 'bf16': False, 'memory_efficient_bf16': False, 'fp16': True, 'memory_efficient_fp16': False, 'fp16_no_flatten_grads': False, 'fp16_init_scale': 128, 'fp16_scale_window': None, 'fp16_scale_tolerance': 0.0, 'on_cpu_convert_precision': False, 'min_loss_scale': 0.0001, 'threshold_loss_scale': None, 'amp': False, 'amp_batch_retries': 2, 'amp_init_scale': 128, 'amp_scale_window': None, 'user_dir': None, 'empty_cache_freq': 0, 'all_gather_list_size': 16384, 'model_parallel_size': 1, 'quantization_config_path': None, 'profile': False, 'reset_logging': False, 'suppress_crashes': False, 'use_plasma_view': False, 'plasma_path': '/tmp/plasma', 'slstm': 0, 'kernel_size': 3, 'use_global': True, 'use_last_global': True}, 'common_eval': {'_name': None, 'path': None, 'post_process': None, 'quiet': False, 'model_overrides': '{}', 'results_path': None}, 'distributed_training': {'_name': None, 'distributed_world_size': 8, 'distributed_num_procs': 8, 'distributed_rank': 0, 'distributed_backend': 'nccl', 'distributed_init_method': 'env://', 'distributed_port': -1, 'device_id': 0, 'distributed_no_spawn': True, 'ddp_backend': 'legacy_ddp', 'ddp_comm_hook': 'none', 'bucket_cap_mb': 25, 'fix_batches_to_gpus': False, 'find_unused_parameters': False, 'fast_stat_sync': False, 'heartbeat_timeout': -1, 'broadcast_buffers': False, 'slowmo_momentum': None, 'slowmo_algorithm': 'LocalSGD', 'localsgd_frequency': 3, 'nprocs_per_node': 8, 'pipeline_model_parallel': False, 'pipeline_balance': None, 'pipeline_devices': None, 'pipeline_chunks': 0, 'pipeline_encoder_balance': None, 'pipeline_encoder_devices': None, 'pipeline_decoder_balance': None, 'pipeline_decoder_devices': None, 'pipeline_checkpoint': 'never', 'zero_sharding': 'none', 'fp16': True, 'memory_efficient_fp16': False, 'tpu': False, 'no_reshard_after_forward': False, 'fp32_reduce_scatter': False, 'cpu_offload': False, 'use_sharded_state': False}, 'dataset': {'_name': None, 'num_workers': 1, 'skip_invalid_size_inputs_valid_test': True, 'max_tokens': None, 'batch_size': 16, 'required_batch_size_multiple': 8, 'required_seq_len_multiple': 1, 'dataset_impl': None, 'data_buffer_size': 10, 'train_subset': 'train', 'valid_subset': 'valid', 'combine_valid_subsets': None, 'ignore_unused_valid_subsets': False, 'validate_interval': 1, 'validate_interval_updates': 0, 'validate_after_updates': 0, 'fixed_validation_seed': None, 'disable_validation': True, 'max_tokens_valid': None, 'batch_size_valid': 16, 'max_valid_steps': None, 'curriculum': 0, 'gen_subset': 'test', 'num_shards': 1, 'shard_id': 0}, 'optimization': {'_name': None, 'max_epoch': 0, 'max_update': 300000, 'stop_time_hours': 0.0, 'clip_norm': 0.0, 'sentence_avg': False, 'update_freq': [8], 'lr': [0.003], 'stop_min_lr': -1.0, 'use_bmuf': False}, 'checkpoint': {'_name': None, 'save_dir': './cn-wiki/slstm1792_ln-003_posinput-dp0', 'restore_file': 'checkpoint_last.pt', 'finetune_from_model': None, 'reset_dataloader': False, 'reset_lr_scheduler': False, 'reset_meters': False, 'reset_optimizer': False, 'optimizer_overrides': '{}', 'save_interval': 5, 'save_interval_updates': 0, 'keep_interval_updates': -1, 'keep_interval_updates_pattern': -1, 'keep_last_epochs': -1, 'keep_best_checkpoints': -1, 'no_save': False, 'no_epoch_checkpoints': False, 'no_last_checkpoints': False, 'no_save_optimizer_state': False, 'best_checkpoint_metric': 'loss', 'maximize_best_checkpoint_metric': False, 'patience': -1, 'checkpoint_suffix': '', 'checkpoint_shard_count': 1, 'load_checkpoint_on_all_dp_ranks': False, 'write_checkpoints_asynchronously': False, 'model_parallel_size': 1}, 'bmuf': {'_name': None, 'block_lr': 1.0, 'block_momentum': 0.875, 'global_sync_iter': 50, 'warmup_iterations': 500, 'use_nbm': False, 'average_sync': False, 'distributed_world_size': 8}, 'generation': {'_name': None, 'beam': 5, 'nbest': 1, 'max_len_a': 0.0, 'max_len_b': 200, 'min_len': 1, 'match_source_len': False, 'unnormalized': False, 'no_early_stop': False, 'no_beamable_mm': False, 'lenpen': 1.0, 'unkpen': 0.0, 'replace_unk': None, 'sacrebleu': False, 'score_reference': False, 'prefix_size': 0, 'no_repeat_ngram_size': 0, 'sampling': False, 'sampling_topk': -1, 'sampling_topp': -1.0, 'constraints': None, 'temperature': 1.0, 'diverse_beam_groups': -1, 'diverse_beam_strength': 0.5, 'diversity_rate': -1.0, 'print_alignment': None, 'print_step': False, 'lm_path': None, 'lm_weight': 0.0, 'iter_decode_eos_penalty': 0.0, 'iter_decode_max_iter': 10, 'iter_decode_force_max_iter': False, 'iter_decode_with_beam': 1, 'iter_decode_with_external_reranker': False, 'retain_iter_history': False, 'retain_dropout': False, 'retain_dropout_modules': None, 'decoding_format': None, 'no_seed_provided': False}, 'eval_lm': {'_name': None, 'output_word_probs': False, 'output_word_stats': False, 'context_window': 0, 'softmax_batch': 9223372036854775807}, 'interactive': {'_name': None, 'buffer_size': 0, 'input': '-'}, 'model': Namespace(_name='slstm1792_ln_posinput', activation_fn='gelu', adam_betas='(0.9,0.98)', adam_eps=1e-06, all_gather_list_size=16384, amp=False, amp_batch_retries=2, amp_init_scale=128, amp_scale_window=None, arch='slstm1792_ln_posinput', azureml_logging=False, batch_size=16, batch_size_valid=16, best_checkpoint_metric='loss', bf16=False, bpe=None, broadcast_buffers=False, bucket_cap_mb=25, checkpoint_shard_count=1, checkpoint_suffix='', clip_norm=0.0, combine_valid_subsets=None, cpu=False, cpu_offload=False, criterion='masked_lm', curriculum=0, data='/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki', data_buffer_size=10, dataset_impl=None, ddp_backend='legacy_ddp', ddp_comm_hook='none', device_id=0, disable_validation=True, distributed_backend='nccl', distributed_init_method=None, distributed_no_spawn=False, distributed_num_procs=8, distributed_port=-1, distributed_rank=0, distributed_world_size=8, dropout=0.0, empty_cache_freq=0, encoder_embed_dim=1792, encoder_layerdrop=0, encoder_layers=10, encoder_layers_to_keep=None, encoder_learned_pos=True, end_learning_rate=0.0, eos=2, fast_stat_sync=False, find_unused_parameters=False, finetune_from_model=None, fix_batches_to_gpus=False, fixed_validation_seed=None, force_anneal=None, fp16=True, fp16_init_scale=128, fp16_no_flatten_grads=False, fp16_scale_tolerance=0.0, fp16_scale_window=None, fp32_reduce_scatter=False, freq_weighted_replacement=False, gen_subset='test', heartbeat_timeout=-1, ignore_unused_valid_subsets=False, initgaussian=False, keep_best_checkpoints=-1, keep_interval_updates=-1, keep_interval_updates_pattern=-1, keep_last_epochs=-1, kernel_size=3, layernorm_embedding=False, leave_unmasked_prob=0.1, ln=True, load_checkpoint_on_all_dp_ranks=False, localsgd_frequency=3, log_file=None, log_format='simple', log_interval=5000, lr=[0.003], lr_scheduler='polynomial_decay', mask_multiple_length=1, mask_prob=0.15, mask_stdev=0.0, mask_whole_words=False, max_epoch=0, max_source_positions=512, max_tokens=None, max_tokens_valid=None, max_update=300000, max_valid_steps=None, maximize_best_checkpoint_metric=False, memory_efficient_bf16=False, memory_efficient_fp16=False, min_loss_scale=0.0001, min_params_to_wrap=100000000, model_parallel_size=1, mt=False, no_epoch_checkpoints=False, no_last_checkpoints=False, no_progress_bar=False, no_reshard_after_forward=False, no_save=False, no_save_optimizer_state=False, no_seed_provided=False, no_token_positional_embeddings=False, nprocs_per_node=8, num_shards=1, num_workers=1, on_cpu_convert_precision=False, optimizer='adam', optimizer_overrides='{}', pad=1, patience=-1, pipeline_balance=None, pipeline_checkpoint='never', pipeline_chunks=0, pipeline_decoder_balance=None, pipeline_decoder_devices=None, pipeline_devices=None, pipeline_encoder_balance=None, pipeline_encoder_devices=None, pipeline_model_parallel=False, plasma_path='/tmp/plasma', pos_g2h=False, pos_h2g=False, pos_input=True, power=1.0, profile=False, quant_noise_pq=0, quant_noise_pq_block_size=8, quant_noise_scalar=0, quantization_config_path=None, random_token_prob=0.1, required_batch_size_multiple=8, required_seq_len_multiple=1, reset_dataloader=False, reset_logging=False, reset_lr_scheduler=False, reset_meters=False, reset_optimizer=False, restore_file='checkpoint_last.pt', sample_break_mode='complete', save_dir='./cn-wiki/slstm1792_ln-003_posinput-dp0', save_interval=5, save_interval_updates=0, scoring='bleu', seed=1, sentence_avg=False, shard_id=0, shorten_data_split_list='', shorten_method='none', simul_type=None, skip_invalid_size_inputs_valid_test=True, slowmo_algorithm='LocalSGD', slowmo_momentum=None, slstm=0, slstm_kernel_size=1, spectral_norm_classification_head=False, stop_min_lr=-1.0, stop_time_hours=0, suppress_crashes=False, task='masked_lm', tensorboard_logdir='./cn-wiki/slstm1792_ln-003_posinput-dp0', threshold_loss_scale=None, tokenizer=None, tokens_per_sample=512, total_num_update='300000', tpu=False, train_subset='train', unk=3, untie_weights=False, update_freq=[8], use_bmuf=False, use_global=True, use_last_global=True, use_layer_norm=False, use_noise=False, use_old_adam=False, use_plasma_view=False, use_sharded_state=False, user_dir=None, valid_subset='valid', validate_after_updates=0, validate_interval=1, validate_interval_updates=0, wandb_project=None, warmup_updates=3000, weight_decay=0.03, write_checkpoints_asynchronously=False, zero_sharding='none'), 'task': Namespace(_name='masked_lm', activation_fn='gelu', adam_betas='(0.9,0.98)', adam_eps=1e-06, all_gather_list_size=16384, amp=False, amp_batch_retries=2, amp_init_scale=128, amp_scale_window=None, arch='slstm1792_ln_posinput', azureml_logging=False, batch_size=16, batch_size_valid=16, best_checkpoint_metric='loss', bf16=False, bpe=None, broadcast_buffers=False, bucket_cap_mb=25, checkpoint_shard_count=1, checkpoint_suffix='', clip_norm=0.0, combine_valid_subsets=None, cpu=False, cpu_offload=False, criterion='masked_lm', curriculum=0, data='/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki', data_buffer_size=10, dataset_impl=None, ddp_backend='legacy_ddp', ddp_comm_hook='none', device_id=0, disable_validation=True, distributed_backend='nccl', distributed_init_method=None, distributed_no_spawn=False, distributed_num_procs=8, distributed_port=-1, distributed_rank=0, distributed_world_size=8, dropout=0.0, empty_cache_freq=0, encoder_embed_dim=1792, encoder_layerdrop=0, encoder_layers=10, encoder_layers_to_keep=None, encoder_learned_pos=True, end_learning_rate=0.0, eos=2, fast_stat_sync=False, find_unused_parameters=False, finetune_from_model=None, fix_batches_to_gpus=False, fixed_validation_seed=None, force_anneal=None, fp16=True, fp16_init_scale=128, fp16_no_flatten_grads=False, fp16_scale_tolerance=0.0, fp16_scale_window=None, fp32_reduce_scatter=False, freq_weighted_replacement=False, gen_subset='test', heartbeat_timeout=-1, ignore_unused_valid_subsets=False, initgaussian=False, keep_best_checkpoints=-1, keep_interval_updates=-1, keep_interval_updates_pattern=-1, keep_last_epochs=-1, kernel_size=3, layernorm_embedding=False, leave_unmasked_prob=0.1, ln=True, load_checkpoint_on_all_dp_ranks=False, localsgd_frequency=3, log_file=None, log_format='simple', log_interval=5000, lr=[0.003], lr_scheduler='polynomial_decay', mask_multiple_length=1, mask_prob=0.15, mask_stdev=0.0, mask_whole_words=False, max_epoch=0, max_source_positions=512, max_tokens=None, max_tokens_valid=None, max_update=300000, max_valid_steps=None, maximize_best_checkpoint_metric=False, memory_efficient_bf16=False, memory_efficient_fp16=False, min_loss_scale=0.0001, min_params_to_wrap=100000000, model_parallel_size=1, mt=False, no_epoch_checkpoints=False, no_last_checkpoints=False, no_progress_bar=False, no_reshard_after_forward=False, no_save=False, no_save_optimizer_state=False, no_seed_provided=False, no_token_positional_embeddings=False, nprocs_per_node=8, num_shards=1, num_workers=1, on_cpu_convert_precision=False, optimizer='adam', optimizer_overrides='{}', pad=1, patience=-1, pipeline_balance=None, pipeline_checkpoint='never', pipeline_chunks=0, pipeline_decoder_balance=None, pipeline_decoder_devices=None, pipeline_devices=None, pipeline_encoder_balance=None, pipeline_encoder_devices=None, pipeline_model_parallel=False, plasma_path='/tmp/plasma', pos_g2h=False, pos_h2g=False, pos_input=True, power=1.0, profile=False, quant_noise_pq=0, quant_noise_pq_block_size=8, quant_noise_scalar=0, quantization_config_path=None, random_token_prob=0.1, required_batch_size_multiple=8, required_seq_len_multiple=1, reset_dataloader=False, reset_logging=False, reset_lr_scheduler=False, reset_meters=False, reset_optimizer=False, restore_file='checkpoint_last.pt', sample_break_mode='complete', save_dir='./cn-wiki/slstm1792_ln-003_posinput-dp0', save_interval=5, save_interval_updates=0, scoring='bleu', seed=1, sentence_avg=False, shard_id=0, shorten_data_split_list='', shorten_method='none', simul_type=None, skip_invalid_size_inputs_valid_test=True, slowmo_algorithm='LocalSGD', slowmo_momentum=None, slstm=0, slstm_kernel_size=1, spectral_norm_classification_head=False, stop_min_lr=-1.0, stop_time_hours=0, suppress_crashes=False, task='masked_lm', tensorboard_logdir='./cn-wiki/slstm1792_ln-003_posinput-dp0', threshold_loss_scale=None, tokenizer=None, tokens_per_sample=512, total_num_update='300000', tpu=False, train_subset='train', unk=3, untie_weights=False, update_freq=[8], use_bmuf=False, use_global=True, use_last_global=True, use_layer_norm=False, use_noise=False, use_old_adam=False, use_plasma_view=False, use_sharded_state=False, user_dir=None, valid_subset='valid', validate_after_updates=0, validate_interval=1, validate_interval_updates=0, wandb_project=None, warmup_updates=3000, weight_decay=0.03, write_checkpoints_asynchronously=False, zero_sharding='none'), 'criterion': Namespace(_name='masked_lm', activation_fn='gelu', adam_betas='(0.9,0.98)', adam_eps=1e-06, all_gather_list_size=16384, amp=False, amp_batch_retries=2, amp_init_scale=128, amp_scale_window=None, arch='slstm1792_ln_posinput', azureml_logging=False, batch_size=16, batch_size_valid=16, best_checkpoint_metric='loss', bf16=False, bpe=None, broadcast_buffers=False, bucket_cap_mb=25, checkpoint_shard_count=1, checkpoint_suffix='', clip_norm=0.0, combine_valid_subsets=None, cpu=False, cpu_offload=False, criterion='masked_lm', curriculum=0, data='/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki', data_buffer_size=10, dataset_impl=None, ddp_backend='legacy_ddp', ddp_comm_hook='none', device_id=0, disable_validation=True, distributed_backend='nccl', distributed_init_method=None, distributed_no_spawn=False, distributed_num_procs=8, distributed_port=-1, distributed_rank=0, distributed_world_size=8, dropout=0.0, empty_cache_freq=0, encoder_embed_dim=1792, encoder_layerdrop=0, encoder_layers=10, encoder_layers_to_keep=None, encoder_learned_pos=True, end_learning_rate=0.0, eos=2, fast_stat_sync=False, find_unused_parameters=False, finetune_from_model=None, fix_batches_to_gpus=False, fixed_validation_seed=None, force_anneal=None, fp16=True, fp16_init_scale=128, fp16_no_flatten_grads=False, fp16_scale_tolerance=0.0, fp16_scale_window=None, fp32_reduce_scatter=False, freq_weighted_replacement=False, gen_subset='test', heartbeat_timeout=-1, ignore_unused_valid_subsets=False, initgaussian=False, keep_best_checkpoints=-1, keep_interval_updates=-1, keep_interval_updates_pattern=-1, keep_last_epochs=-1, kernel_size=3, layernorm_embedding=False, leave_unmasked_prob=0.1, ln=True, load_checkpoint_on_all_dp_ranks=False, localsgd_frequency=3, log_file=None, log_format='simple', log_interval=5000, lr=[0.003], lr_scheduler='polynomial_decay', mask_multiple_length=1, mask_prob=0.15, mask_stdev=0.0, mask_whole_words=False, max_epoch=0, max_source_positions=512, max_tokens=None, max_tokens_valid=None, max_update=300000, max_valid_steps=None, maximize_best_checkpoint_metric=False, memory_efficient_bf16=False, memory_efficient_fp16=False, min_loss_scale=0.0001, min_params_to_wrap=100000000, model_parallel_size=1, mt=False, no_epoch_checkpoints=False, no_last_checkpoints=False, no_progress_bar=False, no_reshard_after_forward=False, no_save=False, no_save_optimizer_state=False, no_seed_provided=False, no_token_positional_embeddings=False, nprocs_per_node=8, num_shards=1, num_workers=1, on_cpu_convert_precision=False, optimizer='adam', optimizer_overrides='{}', pad=1, patience=-1, pipeline_balance=None, pipeline_checkpoint='never', pipeline_chunks=0, pipeline_decoder_balance=None, pipeline_decoder_devices=None, pipeline_devices=None, pipeline_encoder_balance=None, pipeline_encoder_devices=None, pipeline_model_parallel=False, plasma_path='/tmp/plasma', pos_g2h=False, pos_h2g=False, pos_input=True, power=1.0, profile=False, quant_noise_pq=0, quant_noise_pq_block_size=8, quant_noise_scalar=0, quantization_config_path=None, random_token_prob=0.1, required_batch_size_multiple=8, required_seq_len_multiple=1, reset_dataloader=False, reset_logging=False, reset_lr_scheduler=False, reset_meters=False, reset_optimizer=False, restore_file='checkpoint_last.pt', sample_break_mode='complete', save_dir='./cn-wiki/slstm1792_ln-003_posinput-dp0', save_interval=5, save_interval_updates=0, scoring='bleu', seed=1, sentence_avg=False, shard_id=0, shorten_data_split_list='', shorten_method='none', simul_type=None, skip_invalid_size_inputs_valid_test=True, slowmo_algorithm='LocalSGD', slowmo_momentum=None, slstm=0, slstm_kernel_size=1, spectral_norm_classification_head=False, stop_min_lr=-1.0, stop_time_hours=0, suppress_crashes=False, task='masked_lm', tensorboard_logdir='./cn-wiki/slstm1792_ln-003_posinput-dp0', threshold_loss_scale=None, tokenizer=None, tokens_per_sample=512, total_num_update='300000', tpu=False, train_subset='train', unk=3, untie_weights=False, update_freq=[8], use_bmuf=False, use_global=True, use_last_global=True, use_layer_norm=False, use_noise=False, use_old_adam=False, use_plasma_view=False, use_sharded_state=False, user_dir=None, valid_subset='valid', validate_after_updates=0, validate_interval=1, validate_interval_updates=0, wandb_project=None, warmup_updates=3000, weight_decay=0.03, write_checkpoints_asynchronously=False, zero_sharding='none'), 'optimizer': {'_name': 'adam', 'adam_betas': '(0.9,0.98)', 'adam_eps': 1e-06, 'weight_decay': 0.03, 'use_old_adam': False, 'tpu': False, 'lr': [0.003]}, 'lr_scheduler': {'_name': 'polynomial_decay', 'warmup_updates': 3000, 'force_anneal': None, 'end_learning_rate': 0.0, 'power': 1.0, 'total_num_update': 300000.0, 'lr': [0.003]}, 'scoring': {'_name': 'bleu', 'pad': 1, 'eos': 2, 'unk': 3}, 'bpe': None, 'tokenizer': None, 'simul_type': None}
+2021-08-26 15:48:15 | INFO | fairseq.tasks.masked_lm | dictionary: 30004 types
+/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/valid
+/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/valid
+/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/valid
+/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/valid
+/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/valid
+/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/valid
+2021-08-26 15:48:21 | INFO | fairseq_cli.train | SlstmModel(
+  (encoder): SlstmEncoder(
+    (embed_tokens): Embedding(30005, 1792, padding_idx=1)
+    (embed_positions): LearnedPositionalEmbedding(514, 1792, padding_idx=1)
+    (encoder): SLSTM(
+      (layer): SLSTM_block(
+        (dropout_module): FairseqDropout()
+        (WV_t_ilrfsou): Linear(in_features=7168, out_features=12544, bias=True)
+        (U_t_ilrfsou): Linear(in_features=1792, out_features=12544, bias=False)
+        (WU_g_fo): Linear(in_features=3584, out_features=3584, bias=True)
+        (WU_g_f_): Linear(in_features=3584, out_features=1792, bias=True)
+        (i_norm): FusedLayerNorm(torch.Size([1792]), eps=1e-05, elementwise_affine=True)
+        (l_norm): FusedLayerNorm(torch.Size([1792]), eps=1e-05, elementwise_affine=True)
+        (r_norm): FusedLayerNorm(torch.Size([1792]), eps=1e-05, elementwise_affine=True)
+        (f_norm): FusedLayerNorm(torch.Size([1792]), eps=1e-05, elementwise_affine=True)
+        (s_norm): FusedLayerNorm(torch.Size([1792]), eps=1e-05, elementwise_affine=True)
+        (o_norm): FusedLayerNorm(torch.Size([1792]), eps=1e-05, elementwise_affine=True)
+        (u_norm): FusedLayerNorm(torch.Size([1792]), eps=1e-05, elementwise_affine=True)
+        (gf_norm): FusedLayerNorm(torch.Size([1792]), eps=1e-05, elementwise_affine=True)
+        (go_norm): FusedLayerNorm(torch.Size([1792]), eps=1e-05, elementwise_affine=True)
+        (gf__norm): FusedLayerNorm(torch.Size([1792]), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (layernorm_embedding): FusedLayerNorm(torch.Size([1792]), eps=1e-05, elementwise_affine=True)
+    (lm_head): SlstmLMHead(
+      (dense): Linear(in_features=1792, out_features=1792, bias=True)
+      (layer_norm): FusedLayerNorm(torch.Size([1792]), eps=1e-05, elementwise_affine=True)
+    )
+  )
+  (classification_heads): ModuleDict()
+)
+2021-08-26 15:48:21 | INFO | fairseq_cli.train | task: MaskedLMTask
+2021-08-26 15:48:21 | INFO | fairseq_cli.train | model: SlstmModel
+2021-08-26 15:48:21 | INFO | fairseq_cli.train | criterion: MaskedLmLoss
+2021-08-26 15:48:21 | INFO | fairseq_cli.train | num. shared model params: 189,655,861 (num. trained: 189,655,861)
+2021-08-26 15:48:21 | INFO | fairseq_cli.train | num. expert model params: 0 (num. trained: 0)
+/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/valid
+/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/valid
+2021-08-26 15:48:21 | INFO | fairseq.data.data_utils | loaded 551,681 examples from: /nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/valid
+2021-08-26 15:48:21 | INFO | fairseq.tasks.masked_lm | loaded 48733 blocks from: /nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/valid
+2021-08-26 15:48:22 | INFO | root | Added key: store_based_barrier_key:2 to store for rank: 0
+2021-08-26 15:48:22 | INFO | fairseq.trainer | detected shared parameter: encoder.embed_tokens.weight <- encoder.lm_head.weight
+2021-08-26 15:48:24 | INFO | fairseq.utils | ***********************CUDA enviroments for all 8 workers***********************
+2021-08-26 15:48:24 | INFO | fairseq.utils | rank   0: capabilities =  8.6  ; total memory = 23.700 GB ; name = GeForce RTX 3090                        
+2021-08-26 15:48:24 | INFO | fairseq.utils | rank   1: capabilities =  8.6  ; total memory = 23.700 GB ; name = GeForce RTX 3090                        
+2021-08-26 15:48:24 | INFO | fairseq.utils | rank   2: capabilities =  8.6  ; total memory = 23.700 GB ; name = GeForce RTX 3090                        
+2021-08-26 15:48:24 | INFO | fairseq.utils | rank   3: capabilities =  8.6  ; total memory = 23.700 GB ; name = GeForce RTX 3090                        
+2021-08-26 15:48:24 | INFO | fairseq.utils | rank   4: capabilities =  8.6  ; total memory = 23.700 GB ; name = GeForce RTX 3090                        
+2021-08-26 15:48:24 | INFO | fairseq.utils | rank   5: capabilities =  8.6  ; total memory = 23.700 GB ; name = GeForce RTX 3090                        
+2021-08-26 15:48:24 | INFO | fairseq.utils | rank   6: capabilities =  8.6  ; total memory = 23.700 GB ; name = GeForce RTX 3090                        
+2021-08-26 15:48:24 | INFO | fairseq.utils | rank   7: capabilities =  8.6  ; total memory = 23.700 GB ; name = GeForce RTX 3090                        
+2021-08-26 15:48:24 | INFO | fairseq.utils | ***********************CUDA enviroments for all 8 workers***********************
+2021-08-26 15:48:24 | INFO | fairseq_cli.train | training on 8 devices (GPUs/TPUs)
+2021-08-26 15:48:24 | INFO | fairseq_cli.train | max tokens per device = None and max sentences per device = 16
+2021-08-26 15:48:24 | INFO | fairseq.trainer | Preparing to load checkpoint ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint_last.pt
+2021-08-26 15:48:24 | INFO | fairseq.trainer | No existing checkpoint found ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint_last.pt
+2021-08-26 15:48:24 | INFO | fairseq.trainer | loading train data for epoch 1
+/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/train/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/train
+
+/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/train
+/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/train/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/train
+
+/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/train/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/train
+
+/nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/train
+2021-08-26 15:48:46 | INFO | fairseq.data.data_utils | loaded 33,951,810 examples from: /nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/train
+2021-08-26 15:48:47 | INFO | fairseq.tasks.masked_lm | loaded 1474916 blocks from: /nfs/users/wangyile/fairseq/roberta_pretrain/data-bin/wiki/train
+2021-08-26 15:48:48 | WARNING | fairseq.tasks.fairseq_task | 7,621 samples have invalid sizes and will be skipped, max_positions=512, first few sample ids=[381020, 452411, 32388, 1403853, 911752, 1217886, 1378027, 44110, 904650, 1000507]
+2021-08-26 15:48:48 | WARNING | fairseq.tasks.fairseq_task | 7,621 samples have invalid sizes and will be skipped, max_positions=512, first few sample ids=[381020, 452411, 32388, 1403853, 911752, 1217886, 1378027, 44110, 904650, 1000507]
+2021-08-26 15:48:48 | WARNING | fairseq.tasks.fairseq_task | 7,621 samples have invalid sizes and will be skipped, max_positions=512, first few sample ids=[381020, 452411, 32388, 1403853, 911752, 1217886, 1378027, 44110, 904650, 1000507]
+2021-08-26 15:48:48 | WARNING | fairseq.tasks.fairseq_task | 7,621 samples have invalid sizes and will be skipped, max_positions=512, first few sample ids=[381020, 452411, 32388, 1403853, 911752, 1217886, 1378027, 44110, 904650, 1000507]
+2021-08-26 15:48:48 | WARNING | fairseq.tasks.fairseq_task | 7,621 samples have invalid sizes and will be skipped, max_positions=512, first few sample ids=[381020, 452411, 32388, 1403853, 911752, 1217886, 1378027, 44110, 904650, 1000507]
+2021-08-26 15:48:48 | WARNING | fairseq.tasks.fairseq_task | 7,621 samples have invalid sizes and will be skipped, max_positions=512, first few sample ids=[381020, 452411, 32388, 1403853, 911752, 1217886, 1378027, 44110, 904650, 1000507]
+2021-08-26 15:48:48 | WARNING | fairseq.tasks.fairseq_task | 7,621 samples have invalid sizes and will be skipped, max_positions=512, first few sample ids=[381020, 452411, 32388, 1403853, 911752, 1217886, 1378027, 44110, 904650, 1000507]
+2021-08-26 15:48:48 | WARNING | fairseq.tasks.fairseq_task | 7,621 samples have invalid sizes and will be skipped, max_positions=512, first few sample ids=[381020, 452411, 32388, 1403853, 911752, 1217886, 1378027, 44110, 904650, 1000507]
+-------------------------------------------
+-------------------------------------------
+2021-08-26 15:48:50 | INFO | fairseq.optim.adam | using FusedAdam
+-------------------------------------------
+-------------------------------------------
+-------------------------------------------
+-------------------------------------------
+2021-08-26 15:48:50 | INFO | fairseq.trainer | begin training epoch 1
+2021-08-26 15:48:50 | INFO | fairseq_cli.train | Start iterating over samples
+-------------------------------------------
+-------------------------------------------
+2021-08-26 15:49:02 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 64.0
+2021-08-26 15:49:13 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-26 16:05:21 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-26 17:08:43 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-26 17:26:24 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-26 18:01:32 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-26 18:34:28 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-26 18:43:51 | INFO | fairseq_cli.train | end of epoch 1 (average epoch stats below)
+2021-08-26 18:43:51 | INFO | train | epoch 001 | loss 5.917 | ppl 60.41 | wps 64548.1 | ups 0.14 | wpb 474184 | bsz 1023.5 | num_updates 1426 | lr 0.001426 | gnorm 0.956 | loss_scale 16 | train_wall 10475 | gb_free 8.2 | wall 10528
+2021-08-26 18:43:51 | INFO | fairseq.trainer | begin training epoch 2
+2021-08-26 18:43:51 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-26 19:12:34 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-26 19:52:33 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-26 20:55:15 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-26 21:34:01 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-26 21:38:31 | INFO | fairseq_cli.train | end of epoch 2 (average epoch stats below)
+2021-08-26 21:38:31 | INFO | train | epoch 002 | loss 3.889 | ppl 14.81 | wps 64664 | ups 0.14 | wpb 474203 | bsz 1023.5 | num_updates 2855 | lr 0.002855 | gnorm 0.255 | loss_scale 32 | train_wall 10455 | gb_free 8.2 | wall 21007
+2021-08-26 21:38:31 | INFO | fairseq.trainer | begin training epoch 3
+2021-08-26 21:38:31 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-26 22:36:37 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 64.0
+2021-08-26 22:46:31 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-26 23:24:26 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 00:10:23 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 00:33:28 | INFO | fairseq_cli.train | end of epoch 3 (average epoch stats below)
+2021-08-27 00:33:28 | INFO | train | epoch 003 | loss 3.421 | ppl 10.71 | wps 64552.2 | ups 0.14 | wpb 474190 | bsz 1023.5 | num_updates 4284 | lr 0.00298703 | gnorm 0.195 | loss_scale 32 | train_wall 10472 | gb_free 8.2 | wall 31504
+2021-08-27 00:33:28 | INFO | fairseq.trainer | begin training epoch 4
+2021-08-27 00:33:28 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-27 00:42:59 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 01:19:05 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 01:57:17 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 02:01:10 | INFO | train_inner | epoch 004:    719 / 1433 loss=4.234, ppl=18.82, wps=64583.5, ups=0.14, wpb=474231, bsz=1023.6, num_updates=5000, lr=0.0029798, gnorm=0.432, loss_scale=32, train_wall=36651, gb_free=8.2, wall=36766
+2021-08-27 02:29:05 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 03:10:57 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 03:28:15 | INFO | fairseq_cli.train | end of epoch 4 (average epoch stats below)
+2021-08-27 03:28:15 | INFO | train | epoch 004 | loss 3.156 | ppl 8.92 | wps 64568 | ups 0.14 | wpb 474171 | bsz 1023.5 | num_updates 5712 | lr 0.00297261 | gnorm 0.223 | loss_scale 32 | train_wall 10462 | gb_free 8.2 | wall 41991
+2021-08-27 03:28:15 | INFO | fairseq.trainer | begin training epoch 5
+2021-08-27 03:28:15 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-27 03:46:34 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 04:23:27 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 05:05:29 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 05:39:00 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 06:10:40 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 06:23:06 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 5 @ 7140 updates
+2021-08-27 06:23:06 | INFO | fairseq.trainer | Saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint5.pt
+2021-08-27 06:23:17 | INFO | fairseq.trainer | Finished saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint5.pt
+2021-08-27 06:23:24 | INFO | fairseq.checkpoint_utils | Saved checkpoint ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint5.pt (epoch 5 @ 7140 updates, score None) (writing took 18.0824891384691 seconds)
+2021-08-27 06:23:24 | INFO | fairseq_cli.train | end of epoch 5 (average epoch stats below)
+2021-08-27 06:23:24 | INFO | train | epoch 005 | loss 3.011 | ppl 8.06 | wps 64433.4 | ups 0.14 | wpb 474201 | bsz 1023.5 | num_updates 7140 | lr 0.00295818 | gnorm 0.251 | loss_scale 32 | train_wall 10467 | gb_free 8.5 | wall 52501
+2021-08-27 06:23:25 | INFO | fairseq.trainer | begin training epoch 6
+2021-08-27 06:23:25 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-27 06:44:54 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 07:16:36 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 07:48:14 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 08:19:34 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 08:51:33 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 09:18:22 | INFO | fairseq_cli.train | end of epoch 6 (average epoch stats below)
+2021-08-27 09:18:22 | INFO | train | epoch 006 | loss 2.914 | ppl 7.54 | wps 64501.2 | ups 0.14 | wpb 474181 | bsz 1023.5 | num_updates 8568 | lr 0.00294376 | gnorm 0.272 | loss_scale 32 | train_wall 10473 | gb_free 8.3 | wall 62999
+2021-08-27 09:18:22 | INFO | fairseq.trainer | begin training epoch 7
+2021-08-27 09:18:22 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-27 09:22:53 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 09:55:05 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 10:26:51 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 10:58:21 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 11:30:03 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 12:01:35 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 12:13:17 | INFO | fairseq_cli.train | end of epoch 7 (average epoch stats below)
+2021-08-27 12:13:17 | INFO | train | epoch 007 | loss 2.845 | ppl 7.19 | wps 64481.5 | ups 0.14 | wpb 474201 | bsz 1023.5 | num_updates 9995 | lr 0.00292934 | gnorm 0.29 | loss_scale 32 | train_wall 10470 | gb_free 8.2 | wall 73493
+2021-08-27 12:13:17 | INFO | fairseq.trainer | begin training epoch 8
+2021-08-27 12:13:17 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-27 12:13:54 | INFO | train_inner | epoch 008:      5 / 1433 loss=2.951, ppl=7.73, wps=64486.4, ups=0.14, wpb=474152, bsz=1023.5, num_updates=10000, lr=0.00292929, gnorm=0.265, loss_scale=32, train_wall=36658, gb_free=8.2, wall=73530
+2021-08-27 12:33:01 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 13:04:43 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 13:36:21 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 14:07:44 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 14:39:54 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 15:08:19 | INFO | fairseq_cli.train | end of epoch 8 (average epoch stats below)
+2021-08-27 15:08:19 | INFO | train | epoch 008 | loss 2.793 | ppl 6.93 | wps 64477.8 | ups 0.14 | wpb 474192 | bsz 1023.5 | num_updates 11423 | lr 0.00291492 | gnorm 0.303 | loss_scale 32 | train_wall 10476 | gb_free 8.2 | wall 83995
+2021-08-27 15:08:19 | INFO | fairseq.trainer | begin training epoch 9
+2021-08-27 15:08:19 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-27 15:11:22 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 15:43:05 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 16:14:27 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 16:45:47 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 17:17:15 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 17:48:37 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 18:03:18 | INFO | fairseq_cli.train | end of epoch 9 (average epoch stats below)
+2021-08-27 18:03:18 | INFO | train | epoch 009 | loss 2.753 | ppl 6.74 | wps 64450.9 | ups 0.14 | wpb 474181 | bsz 1023.5 | num_updates 12850 | lr 0.00290051 | gnorm 0.315 | loss_scale 32 | train_wall 10474 | gb_free 8.3 | wall 94494
+2021-08-27 18:03:18 | INFO | fairseq.trainer | begin training epoch 10
+2021-08-27 18:03:18 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-27 18:20:00 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 18:35:50 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-27 19:38:37 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 20:10:01 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 20:41:27 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 20:58:19 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 10 @ 14278 updates
+2021-08-27 20:58:19 | INFO | fairseq.trainer | Saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint10.pt
+2021-08-27 20:58:30 | INFO | fairseq.trainer | Finished saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint10.pt
+2021-08-27 20:58:39 | INFO | fairseq.checkpoint_utils | Saved checkpoint ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint10.pt (epoch 10 @ 14278 updates, score None) (writing took 19.556187128648162 seconds)
+2021-08-27 20:58:39 | INFO | fairseq_cli.train | end of epoch 10 (average epoch stats below)
+2021-08-27 20:58:39 | INFO | train | epoch 010 | loss 2.718 | ppl 6.58 | wps 64357.5 | ups 0.14 | wpb 474180 | bsz 1023.5 | num_updates 14278 | lr 0.00288608 | gnorm 0.326 | loss_scale 32 | train_wall 10477 | gb_free 8.2 | wall 105015
+2021-08-27 20:58:39 | INFO | fairseq.trainer | begin training epoch 11
+2021-08-27 20:58:39 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-27 21:13:09 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 21:33:19 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-27 22:27:06 | INFO | train_inner | epoch 011:    724 / 1433 loss=2.745, ppl=6.7, wps=64448.4, ups=0.14, wpb=474235, bsz=1023.6, num_updates=15000, lr=0.00287879, gnorm=0.317, loss_scale=32, train_wall=36686, gb_free=8.4, wall=110322
+2021-08-27 22:36:02 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-27 22:44:04 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-27 23:30:00 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-27 23:53:33 | INFO | fairseq_cli.train | end of epoch 11 (average epoch stats below)
+2021-08-27 23:53:33 | INFO | train | epoch 011 | loss 2.689 | ppl 6.45 | wps 64527.6 | ups 0.14 | wpb 474190 | bsz 1023.5 | num_updates 15706 | lr 0.00287166 | gnorm 0.335 | loss_scale 16 | train_wall 10470 | gb_free 8.2 | wall 115509
+2021-08-27 23:53:33 | INFO | fairseq.trainer | begin training epoch 12
+2021-08-27 23:53:33 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-28 00:32:34 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-28 00:58:51 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 01:36:55 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 02:15:01 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 02:48:28 | INFO | fairseq_cli.train | end of epoch 12 (average epoch stats below)
+2021-08-28 02:48:28 | INFO | train | epoch 012 | loss 2.665 | ppl 6.34 | wps 64561.7 | ups 0.14 | wpb 474180 | bsz 1023.5 | num_updates 17135 | lr 0.00285722 | gnorm 0.345 | loss_scale 32 | train_wall 10470 | gb_free 8.2 | wall 126004
+2021-08-28 02:48:28 | INFO | fairseq.trainer | begin training epoch 13
+2021-08-28 02:48:28 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-28 03:17:38 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-28 03:49:08 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2021-08-28 04:15:02 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 04:57:59 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 05:43:28 | INFO | fairseq_cli.train | end of epoch 13 (average epoch stats below)
+2021-08-28 05:43:28 | INFO | train | epoch 013 | loss 2.643 | ppl 6.25 | wps 64533.6 | ups 0.14 | wpb 474180 | bsz 1023.5 | num_updates 18564 | lr 0.00284279 | gnorm 0.352 | loss_scale 32 | train_wall 10474 | gb_free 8.3 | wall 136505
+2021-08-28 05:43:29 | INFO | fairseq.trainer | begin training epoch 14
+2021-08-28 05:43:29 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-28 05:52:23 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 06:24:52 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 07:04:49 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 08:07:25 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 08:38:30 | INFO | fairseq_cli.train | end of epoch 14 (average epoch stats below)
+2021-08-28 08:38:30 | INFO | train | epoch 014 | loss 2.624 | ppl 6.17 | wps 64522 | ups 0.14 | wpb 474181 | bsz 1023.5 | num_updates 19993 | lr 0.00282835 | gnorm 0.359 | loss_scale 16 | train_wall 10476 | gb_free 8.4 | wall 147007
+2021-08-28 08:38:30 | INFO | fairseq.trainer | begin training epoch 15
+2021-08-28 08:38:30 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-28 08:39:22 | INFO | train_inner | epoch 015:      7 / 1433 loss=2.651, ppl=6.28, wps=64532.7, ups=0.14, wpb=474133, bsz=1023.5, num_updates=20000, lr=0.00282828, gnorm=0.35, loss_scale=32, train_wall=36647, gb_free=8.2, wall=147058
+2021-08-28 08:48:24 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 09:29:03 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 10:03:44 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 10:40:07 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 11:17:42 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 11:33:28 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 15 @ 21421 updates
+2021-08-28 11:33:28 | INFO | fairseq.trainer | Saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint15.pt
+2021-08-28 11:33:38 | INFO | fairseq.trainer | Finished saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint15.pt
+2021-08-28 11:33:47 | INFO | fairseq.checkpoint_utils | Saved checkpoint ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint15.pt (epoch 15 @ 21421 updates, score None) (writing took 19.55781625956297 seconds)
+2021-08-28 11:33:47 | INFO | fairseq_cli.train | end of epoch 15 (average epoch stats below)
+2021-08-28 11:33:48 | INFO | train | epoch 015 | loss 2.608 | ppl 6.1 | wps 64385.1 | ups 0.14 | wpb 474181 | bsz 1023.5 | num_updates 21421 | lr 0.00281393 | gnorm 0.366 | loss_scale 16 | train_wall 10473 | gb_free 8.2 | wall 157523
+2021-08-28 11:33:48 | INFO | fairseq.trainer | begin training epoch 16
+2021-08-28 11:33:48 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-28 12:20:01 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 12:53:34 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 13:25:58 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 13:59:09 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 14:28:39 | INFO | fairseq_cli.train | end of epoch 16 (average epoch stats below)
+2021-08-28 14:28:39 | INFO | train | epoch 016 | loss 2.593 | ppl 6.03 | wps 64591.4 | ups 0.14 | wpb 474175 | bsz 1023.5 | num_updates 22850 | lr 0.00279949 | gnorm 0.373 | loss_scale 16 | train_wall 10466 | gb_free 8.4 | wall 168015
+2021-08-28 14:28:39 | INFO | fairseq.trainer | begin training epoch 17
+2021-08-28 14:28:39 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-28 14:32:54 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 15:05:18 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 15:44:30 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 16:23:00 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 16:54:23 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 17:23:44 | INFO | fairseq_cli.train | end of epoch 17 (average epoch stats below)
+2021-08-28 17:23:44 | INFO | train | epoch 017 | loss 2.579 | ppl 5.97 | wps 64460.4 | ups 0.14 | wpb 474186 | bsz 1023.5 | num_updates 24278 | lr 0.00278507 | gnorm 0.377 | loss_scale 16 | train_wall 10480 | gb_free 8.5 | wall 178520
+2021-08-28 17:23:44 | INFO | fairseq.trainer | begin training epoch 18
+2021-08-28 17:23:44 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-28 17:27:16 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 17:59:58 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 18:40:31 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 18:52:13 | INFO | train_inner | epoch 018:    725 / 1433 loss=2.589, ppl=6.02, wps=64478.8, ups=0.14, wpb=474188, bsz=1023.6, num_updates=25000, lr=0.00277778, gnorm=0.374, loss_scale=16, train_wall=36664, gb_free=8.2, wall=183829
+2021-08-28 19:14:42 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 19:46:50 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 20:18:46 | INFO | fairseq_cli.train | end of epoch 18 (average epoch stats below)
+2021-08-28 20:18:46 | INFO | train | epoch 018 | loss 2.565 | ppl 5.92 | wps 64476.5 | ups 0.14 | wpb 474181 | bsz 1023.5 | num_updates 25706 | lr 0.00277065 | gnorm 0.384 | loss_scale 32 | train_wall 10476 | gb_free 8.2 | wall 189022
+2021-08-28 20:18:46 | INFO | fairseq.trainer | begin training epoch 19
+2021-08-28 20:18:46 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-28 20:19:30 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 20:50:56 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 21:26:15 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 21:59:38 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 22:35:22 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 23:11:31 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-28 23:13:56 | INFO | fairseq_cli.train | end of epoch 19 (average epoch stats below)
+2021-08-28 23:13:56 | INFO | train | epoch 019 | loss 2.554 | ppl 5.87 | wps 64380 | ups 0.14 | wpb 474195 | bsz 1023.5 | num_updates 27133 | lr 0.00275623 | gnorm 0.391 | loss_scale 16 | train_wall 10485 | gb_free 8.2 | wall 199532
+2021-08-28 23:13:56 | INFO | fairseq.trainer | begin training epoch 20
+2021-08-28 23:13:56 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-28 23:43:11 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 00:14:42 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 00:48:23 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 01:20:57 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 01:54:40 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 02:08:57 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 20 @ 28561 updates
+2021-08-29 02:08:57 | INFO | fairseq.trainer | Saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint20.pt
+2021-08-29 02:09:10 | INFO | fairseq.trainer | Finished saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint20.pt
+2021-08-29 02:09:18 | INFO | fairseq.checkpoint_utils | Saved checkpoint ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint20.pt (epoch 20 @ 28561 updates, score None) (writing took 21.7151195127517 seconds)
+2021-08-29 02:09:18 | INFO | fairseq_cli.train | end of epoch 20 (average epoch stats below)
+2021-08-29 02:09:18 | INFO | train | epoch 020 | loss 2.542 | ppl 5.83 | wps 64354.8 | ups 0.14 | wpb 474192 | bsz 1023.5 | num_updates 28561 | lr 0.00274181 | gnorm 0.395 | loss_scale 16 | train_wall 10475 | gb_free 8.3 | wall 210054
+2021-08-29 02:09:18 | INFO | fairseq.trainer | begin training epoch 21
+2021-08-29 02:09:18 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-29 02:11:58 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 8.0
+2021-08-29 02:12:42 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 4.0
+2021-08-29 03:46:42 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 04:18:16 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 04:51:53 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 05:04:28 | INFO | fairseq_cli.train | end of epoch 21 (average epoch stats below)
+2021-08-29 05:04:28 | INFO | train | epoch 021 | loss 2.532 | ppl 5.78 | wps 64432.6 | ups 0.14 | wpb 474190 | bsz 1023.5 | num_updates 29989 | lr 0.00272738 | gnorm 0.401 | loss_scale 16 | train_wall 10483 | gb_free 8.2 | wall 220564
+2021-08-29 05:04:28 | INFO | fairseq.trainer | begin training epoch 22
+2021-08-29 05:04:28 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-29 05:05:49 | INFO | train_inner | epoch 022:     11 / 1433 loss=2.546, ppl=5.84, wps=64399.4, ups=0.14, wpb=474184, bsz=1023.5, num_updates=30000, lr=0.00272727, gnorm=0.394, loss_scale=16, train_wall=36704, gb_free=8.2, wall=220645
+2021-08-29 05:24:20 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 05:58:00 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 06:31:46 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 07:03:11 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 07:35:03 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 07:59:35 | INFO | fairseq_cli.train | end of epoch 22 (average epoch stats below)
+2021-08-29 07:59:35 | INFO | train | epoch 022 | loss 2.522 | ppl 5.75 | wps 64441.5 | ups 0.14 | wpb 474184 | bsz 1023.5 | num_updates 31417 | lr 0.00271296 | gnorm 0.404 | loss_scale 16 | train_wall 10482 | gb_free 8.2 | wall 231071
+2021-08-29 07:59:35 | INFO | fairseq.trainer | begin training epoch 23
+2021-08-29 07:59:35 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-29 08:08:03 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 08:40:00 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 09:12:31 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 09:45:02 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 10:17:30 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 10:49:18 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 10:54:41 | INFO | fairseq_cli.train | end of epoch 23 (average epoch stats below)
+2021-08-29 10:54:41 | INFO | train | epoch 023 | loss 2.514 | ppl 5.71 | wps 64412.8 | ups 0.14 | wpb 474196 | bsz 1023.5 | num_updates 32844 | lr 0.00269855 | gnorm 0.41 | loss_scale 16 | train_wall 10481 | gb_free 8.2 | wall 241577
+2021-08-29 10:54:41 | INFO | fairseq.trainer | begin training epoch 24
+2021-08-29 10:54:41 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-29 11:20:52 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 11:53:16 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 12:24:39 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 12:56:49 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 13:28:23 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 13:49:53 | INFO | fairseq_cli.train | end of epoch 24 (average epoch stats below)
+2021-08-29 13:49:53 | INFO | train | epoch 024 | loss 2.506 | ppl 5.68 | wps 64413 | ups 0.14 | wpb 474185 | bsz 1023.5 | num_updates 34272 | lr 0.00268412 | gnorm 0.413 | loss_scale 16 | train_wall 10488 | gb_free 8.4 | wall 252089
+2021-08-29 13:49:53 | INFO | fairseq.trainer | begin training epoch 25
+2021-08-29 13:49:53 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-29 14:03:12 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 14:37:03 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 15:09:18 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 15:19:11 | INFO | train_inner | epoch 025:    731 / 1433 loss=2.511, ppl=5.7, wps=64422.1, ups=0.14, wpb=474180, bsz=1023.6, num_updates=35000, lr=0.00267677, gnorm=0.41, loss_scale=16, train_wall=36716, gb_free=8.2, wall=257447
+2021-08-29 15:42:25 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 16:13:48 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 16:45:00 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 25 @ 35700 updates
+2021-08-29 16:45:00 | INFO | fairseq.trainer | Saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint25.pt
+2021-08-29 16:45:11 | INFO | fairseq.trainer | Finished saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint25.pt
+2021-08-29 16:45:20 | INFO | fairseq.checkpoint_utils | Saved checkpoint ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint25.pt (epoch 25 @ 35700 updates, score None) (writing took 19.364654134958982 seconds)
+2021-08-29 16:45:20 | INFO | fairseq_cli.train | end of epoch 25 (average epoch stats below)
+2021-08-29 16:45:20 | INFO | train | epoch 025 | loss 2.497 | ppl 5.64 | wps 64331.9 | ups 0.14 | wpb 474224 | bsz 1023.5 | num_updates 35700 | lr 0.0026697 | gnorm 0.417 | loss_scale 16 | train_wall 10482 | gb_free 8.2 | wall 262616
+2021-08-29 16:45:20 | INFO | fairseq.trainer | begin training epoch 26
+2021-08-29 16:45:20 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-29 16:45:34 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 17:17:21 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 17:49:59 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 18:22:01 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 18:55:09 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 19:26:35 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 19:40:23 | INFO | fairseq_cli.train | end of epoch 26 (average epoch stats below)
+2021-08-29 19:40:23 | INFO | train | epoch 026 | loss 2.49 | ppl 5.62 | wps 64424.1 | ups 0.14 | wpb 474168 | bsz 1023.5 | num_updates 37127 | lr 0.00265528 | gnorm 0.42 | loss_scale 16 | train_wall 10478 | gb_free 8.2 | wall 273119
+2021-08-29 19:40:23 | INFO | fairseq.trainer | begin training epoch 27
+2021-08-29 19:40:23 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-29 19:59:14 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 20:30:59 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 21:04:34 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 21:35:53 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 22:07:28 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 22:35:30 | INFO | fairseq_cli.train | end of epoch 27 (average epoch stats below)
+2021-08-29 22:35:30 | INFO | train | epoch 027 | loss 2.483 | ppl 5.59 | wps 64441.9 | ups 0.14 | wpb 474179 | bsz 1023.5 | num_updates 38555 | lr 0.00264086 | gnorm 0.424 | loss_scale 16 | train_wall 10483 | gb_free 8.2 | wall 283626
+2021-08-29 22:35:30 | INFO | fairseq.trainer | begin training epoch 28
+2021-08-29 22:35:30 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-29 22:39:18 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 23:10:52 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-29 23:42:54 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 00:14:19 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 00:47:37 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 01:19:24 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 01:30:55 | INFO | fairseq_cli.train | end of epoch 28 (average epoch stats below)
+2021-08-30 01:30:55 | INFO | train | epoch 028 | loss 2.476 | ppl 5.56 | wps 64292.4 | ups 0.14 | wpb 474196 | bsz 1023.5 | num_updates 39982 | lr 0.00262644 | gnorm 0.427 | loss_scale 16 | train_wall 10500 | gb_free 8.3 | wall 294151
+2021-08-30 01:30:55 | INFO | fairseq.trainer | begin training epoch 29
+2021-08-30 01:30:55 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-30 01:33:08 | INFO | train_inner | epoch 029:     18 / 1433 loss=2.485, ppl=5.6, wps=64364.7, ups=0.14, wpb=474195, bsz=1023.5, num_updates=40000, lr=0.00262626, gnorm=0.423, loss_scale=16, train_wall=36729, gb_free=8.2, wall=294284
+2021-08-30 01:50:57 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 02:24:07 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 02:55:38 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 03:27:30 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 03:59:40 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 04:26:17 | INFO | fairseq_cli.train | end of epoch 29 (average epoch stats below)
+2021-08-30 04:26:17 | INFO | train | epoch 029 | loss 2.47 | ppl 5.54 | wps 64357.1 | ups 0.14 | wpb 474195 | bsz 1023.5 | num_updates 41410 | lr 0.00261202 | gnorm 0.429 | loss_scale 16 | train_wall 10496 | gb_free 8.6 | wall 304673
+2021-08-30 04:26:17 | INFO | fairseq.trainer | begin training epoch 30
+2021-08-30 04:26:17 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-30 04:32:18 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 05:03:43 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 05:35:49 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 06:07:24 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 06:39:02 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 07:10:20 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 07:21:18 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 30 @ 42837 updates
+2021-08-30 07:21:18 | INFO | fairseq.trainer | Saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint30.pt
+2021-08-30 07:21:28 | INFO | fairseq.trainer | Finished saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint30.pt
+2021-08-30 07:21:37 | INFO | fairseq.checkpoint_utils | Saved checkpoint ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint30.pt (epoch 30 @ 42837 updates, score None) (writing took 18.30396386794746 seconds)
+2021-08-30 07:21:37 | INFO | fairseq_cli.train | end of epoch 30 (average epoch stats below)
+2021-08-30 07:21:37 | INFO | train | epoch 030 | loss 2.464 | ppl 5.52 | wps 64323.9 | ups 0.14 | wpb 474176 | bsz 1023.5 | num_updates 42837 | lr 0.00259761 | gnorm 0.432 | loss_scale 16 | train_wall 10476 | gb_free 8.3 | wall 315193
+2021-08-30 07:21:37 | INFO | fairseq.trainer | begin training epoch 31
+2021-08-30 07:21:37 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-30 07:42:16 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 08:13:57 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 08:45:33 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 09:17:15 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 09:48:36 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 10:16:32 | INFO | fairseq_cli.train | end of epoch 31 (average epoch stats below)
+2021-08-30 10:16:32 | INFO | train | epoch 031 | loss 2.458 | ppl 5.5 | wps 64513.8 | ups 0.14 | wpb 474174 | bsz 1023.5 | num_updates 44265 | lr 0.00258318 | gnorm 0.434 | loss_scale 16 | train_wall 10471 | gb_free 8.2 | wall 325688
+2021-08-30 10:16:32 | INFO | fairseq.trainer | begin training epoch 32
+2021-08-30 10:16:32 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-30 10:20:04 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 10:51:22 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 11:22:50 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 11:46:38 | INFO | train_inner | epoch 032:    738 / 1433 loss=2.462, ppl=5.51, wps=64410.2, ups=0.14, wpb=474181, bsz=1023.6, num_updates=45000, lr=0.00257576, gnorm=0.432, loss_scale=16, train_wall=36703, gb_free=8.3, wall=331094
+2021-08-30 11:54:58 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 12:26:32 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 12:58:29 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 13:11:43 | INFO | fairseq_cli.train | end of epoch 32 (average epoch stats below)
+2021-08-30 13:11:43 | INFO | train | epoch 032 | loss 2.451 | ppl 5.47 | wps 64381.4 | ups 0.14 | wpb 474185 | bsz 1023.5 | num_updates 45692 | lr 0.00256877 | gnorm 0.436 | loss_scale 16 | train_wall 10484 | gb_free 9.1 | wall 336199
+2021-08-30 21:54:38 | INFO | fairseq.trainer | begin training epoch 33
+2021-08-30 21:54:38 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-30 22:24:31 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 22:55:57 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 23:27:26 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-30 23:59:14 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 00:31:10 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 00:49:35 | INFO | fairseq_cli.train | end of epoch 33 (average epoch stats below)
+2021-08-31 00:49:35 | INFO | train | epoch 033 | loss 2.447 | ppl 5.45 | wps 64501 | ups 0.14 | wpb 474167 | bsz 1023.5 | num_updates 47120 | lr 0.00255434 | gnorm 0.438 | loss_scale 16 | train_wall 10473 | gb_free 8.2 | wall 31522
+2021-08-31 00:49:35 | INFO | fairseq.trainer | begin training epoch 34
+2021-08-31 00:49:35 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-31 01:02:32 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 01:33:54 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 02:05:33 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 02:37:33 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 03:08:55 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 03:40:30 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 03:44:38 | INFO | fairseq_cli.train | end of epoch 34 (average epoch stats below)
+2021-08-31 03:44:38 | INFO | train | epoch 034 | loss 2.441 | ppl 5.43 | wps 64431.5 | ups 0.14 | wpb 474210 | bsz 1023.5 | num_updates 48547 | lr 0.00253993 | gnorm 0.441 | loss_scale 16 | train_wall 10477 | gb_free 8.2 | wall 42025
+2021-08-31 03:44:38 | INFO | fairseq.trainer | begin training epoch 35
+2021-08-31 03:44:38 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-31 04:12:03 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 04:43:29 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 05:14:52 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 05:46:23 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 06:18:09 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 06:39:47 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 35 @ 49975 updates
+2021-08-31 06:39:47 | INFO | fairseq.trainer | Saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint35.pt
+2021-08-31 06:39:58 | INFO | fairseq.trainer | Finished saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint35.pt
+2021-08-31 06:40:06 | INFO | fairseq.checkpoint_utils | Saved checkpoint ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint35.pt (epoch 35 @ 49975 updates, score None) (writing took 19.149084528908134 seconds)
+2021-08-31 06:40:06 | INFO | fairseq_cli.train | end of epoch 35 (average epoch stats below)
+2021-08-31 06:40:06 | INFO | train | epoch 035 | loss 2.436 | ppl 5.41 | wps 64314.2 | ups 0.14 | wpb 474176 | bsz 1023.5 | num_updates 49975 | lr 0.00252551 | gnorm 0.443 | loss_scale 16 | train_wall 10484 | gb_free 8.3 | wall 52553
+2021-08-31 06:40:06 | INFO | fairseq.trainer | begin training epoch 36
+2021-08-31 06:40:06 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-31 06:43:09 | INFO | train_inner | epoch 036:     25 / 1433 loss=2.443, ppl=5.44, wps=64413.3, ups=0.14, wpb=474189, bsz=1023.5, num_updates=50000, lr=0.00252525, gnorm=0.44, loss_scale=16, train_wall=36701, gb_free=8.2, wall=52735
+2021-08-31 06:50:14 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 07:21:39 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 07:53:11 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 08:24:49 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 08:56:17 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 09:28:01 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 09:35:11 | INFO | fairseq_cli.train | end of epoch 36 (average epoch stats below)
+2021-08-31 09:35:11 | INFO | train | epoch 036 | loss 2.431 | ppl 5.39 | wps 64414.7 | ups 0.14 | wpb 474192 | bsz 1023.5 | num_updates 51402 | lr 0.00251109 | gnorm 0.447 | loss_scale 16 | train_wall 10481 | gb_free 8.3 | wall 63058
+2021-08-31 09:35:11 | INFO | fairseq.trainer | begin training epoch 37
+2021-08-31 09:35:11 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-31 09:59:48 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 10:31:12 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 11:02:50 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 11:34:32 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 12:06:02 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 12:30:09 | INFO | fairseq_cli.train | end of epoch 37 (average epoch stats below)
+2021-08-31 12:30:09 | INFO | train | epoch 037 | loss 2.427 | ppl 5.38 | wps 64502 | ups 0.14 | wpb 474198 | bsz 1023.5 | num_updates 52830 | lr 0.00249667 | gnorm 0.447 | loss_scale 16 | train_wall 10473 | gb_free 8.2 | wall 73556
+2021-08-31 12:30:09 | INFO | fairseq.trainer | begin training epoch 38
+2021-08-31 12:30:09 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-31 12:37:21 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 13:08:52 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 13:40:15 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 14:11:42 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 14:43:21 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 15:15:06 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 15:25:14 | INFO | fairseq_cli.train | end of epoch 38 (average epoch stats below)
+2021-08-31 15:25:14 | INFO | train | epoch 038 | loss 2.422 | ppl 5.36 | wps 64417.7 | ups 0.14 | wpb 474195 | bsz 1023.5 | num_updates 54257 | lr 0.00248225 | gnorm 0.448 | loss_scale 16 | train_wall 10479 | gb_free 8.3 | wall 84061
+2021-08-31 15:25:14 | INFO | fairseq.trainer | begin training epoch 39
+2021-08-31 15:25:14 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-31 15:46:37 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 16:18:15 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 16:49:44 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 16:56:19 | INFO | train_inner | epoch 039:    746 / 1433 loss=2.425, ppl=5.37, wps=64456, ups=0.14, wpb=474268, bsz=1023.6, num_updates=55000, lr=0.00247475, gnorm=0.448, loss_scale=16, train_wall=36703, gb_free=8.2, wall=89526
+2021-08-31 17:21:03 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 17:52:36 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 18:20:14 | INFO | fairseq_cli.train | end of epoch 39 (average epoch stats below)
+2021-08-31 18:20:14 | INFO | train | epoch 039 | loss 2.418 | ppl 5.34 | wps 64485.1 | ups 0.14 | wpb 474173 | bsz 1023.5 | num_updates 55685 | lr 0.00246783 | gnorm 0.451 | loss_scale 16 | train_wall 10475 | gb_free 8.2 | wall 94561
+2021-08-31 18:20:14 | INFO | fairseq.trainer | begin training epoch 40
+2021-08-31 18:20:14 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-31 18:24:09 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 18:55:46 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 19:27:34 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 19:58:53 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 20:30:24 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 21:01:48 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 21:15:16 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 40 @ 57112 updates
+2021-08-31 21:15:16 | INFO | fairseq.trainer | Saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint40.pt
+2021-08-31 21:15:34 | INFO | fairseq.trainer | Finished saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint40.pt
+2021-08-31 21:16:08 | INFO | fairseq.checkpoint_utils | Saved checkpoint ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint40.pt (epoch 40 @ 57112 updates, score None) (writing took 52.355369459837675 seconds)
+2021-08-31 21:16:08 | INFO | fairseq_cli.train | end of epoch 40 (average epoch stats below)
+2021-08-31 21:16:09 | INFO | train | epoch 040 | loss 2.414 | ppl 5.33 | wps 64112.6 | ups 0.14 | wpb 474160 | bsz 1023.5 | num_updates 57112 | lr 0.00245341 | gnorm 0.454 | loss_scale 16 | train_wall 10476 | gb_free 8.2 | wall 105115
+2021-08-31 21:16:09 | INFO | fairseq.trainer | begin training epoch 41
+2021-08-31 21:16:09 | INFO | fairseq_cli.train | Start iterating over samples
+2021-08-31 21:34:19 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-08-31 21:49:36 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 8.0
+2021-08-31 22:18:10 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 4.0
+2021-08-31 23:35:42 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 8.0
+2021-09-01 00:11:01 | INFO | fairseq_cli.train | end of epoch 41 (average epoch stats below)
+2021-09-01 00:11:01 | INFO | train | epoch 041 | loss 2.409 | ppl 5.31 | wps 64580.5 | ups 0.14 | wpb 474182 | bsz 1023.5 | num_updates 58541 | lr 0.00243898 | gnorm 0.457 | loss_scale 16 | train_wall 10467 | gb_free 8.2 | wall 115608
+2021-09-01 00:11:01 | INFO | fairseq.trainer | begin training epoch 42
+2021-09-01 00:11:01 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-01 00:38:26 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 01:10:06 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 01:41:39 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 02:13:17 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 02:44:42 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 03:06:12 | INFO | fairseq_cli.train | end of epoch 42 (average epoch stats below)
+2021-09-01 03:06:12 | INFO | train | epoch 042 | loss 2.405 | ppl 5.3 | wps 64423.4 | ups 0.14 | wpb 474198 | bsz 1023.5 | num_updates 59969 | lr 0.00242456 | gnorm 0.458 | loss_scale 16 | train_wall 10486 | gb_free 8.2 | wall 126119
+2021-09-01 03:06:12 | INFO | fairseq.trainer | begin training epoch 43
+2021-09-01 03:06:12 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-01 03:10:01 | INFO | train_inner | epoch 043:     31 / 1433 loss=2.411, ppl=5.32, wps=64379, ups=0.14, wpb=474110, bsz=1023.5, num_updates=60000, lr=0.00242424, gnorm=0.456, loss_scale=16, train_wall=36680, gb_free=8.6, wall=126347
+2021-09-01 03:16:15 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 03:47:41 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 04:19:03 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 04:50:29 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 05:22:09 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 05:53:29 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 06:01:16 | INFO | fairseq_cli.train | end of epoch 43 (average epoch stats below)
+2021-09-01 06:01:16 | INFO | train | epoch 043 | loss 2.401 | ppl 5.28 | wps 64423.5 | ups 0.14 | wpb 474204 | bsz 1023.5 | num_updates 61396 | lr 0.00241014 | gnorm 0.46 | loss_scale 16 | train_wall 10479 | gb_free 8.4 | wall 136623
+2021-09-01 06:01:16 | INFO | fairseq.trainer | begin training epoch 44
+2021-09-01 06:01:16 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-01 06:24:51 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 06:56:15 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 07:27:43 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 07:59:24 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 08:31:05 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 08:40:58 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 8.0
+2021-09-01 08:56:22 | INFO | fairseq_cli.train | end of epoch 44 (average epoch stats below)
+2021-09-01 08:56:22 | INFO | train | epoch 044 | loss 2.397 | ppl 5.27 | wps 64403.5 | ups 0.14 | wpb 474172 | bsz 1023.5 | num_updates 62823 | lr 0.00239573 | gnorm 0.461 | loss_scale 8 | train_wall 10481 | gb_free 8.2 | wall 147129
+2021-09-01 08:56:22 | INFO | fairseq.trainer | begin training epoch 45
+2021-09-01 08:56:22 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-01 09:43:41 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 10:15:06 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 10:46:31 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 11:18:25 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 11:49:45 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 11:51:27 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 45 @ 64251 updates
+2021-09-01 11:51:27 | INFO | fairseq.trainer | Saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint45.pt
+2021-09-01 11:51:37 | INFO | fairseq.trainer | Finished saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint45.pt
+2021-09-01 11:51:45 | INFO | fairseq.checkpoint_utils | Saved checkpoint ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint45.pt (epoch 45 @ 64251 updates, score None) (writing took 18.20768355205655 seconds)
+2021-09-01 11:51:45 | INFO | fairseq_cli.train | end of epoch 45 (average epoch stats below)
+2021-09-01 11:51:45 | INFO | train | epoch 045 | loss 2.394 | ppl 5.26 | wps 64347.7 | ups 0.14 | wpb 474174 | bsz 1023.5 | num_updates 64251 | lr 0.0023813 | gnorm 0.465 | loss_scale 16 | train_wall 10479 | gb_free 8.2 | wall 157652
+2021-09-01 11:51:45 | INFO | fairseq.trainer | begin training epoch 46
+2021-09-01 11:51:45 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-01 12:21:19 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 12:52:38 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 12:57:47 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 8.0
+2021-09-01 13:23:26 | INFO | train_inner | epoch 046:    752 / 1433 loss=2.396, ppl=5.26, wps=64419.1, ups=0.14, wpb=474194, bsz=1023.6, num_updates=65000, lr=0.00237374, gnorm=0.462, loss_scale=8, train_wall=36699, gb_free=8.2, wall=163153
+2021-09-01 13:49:33 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 8.0
+2021-09-01 14:46:41 | INFO | fairseq_cli.train | end of epoch 46 (average epoch stats below)
+2021-09-01 14:46:41 | INFO | train | epoch 046 | loss 2.39 | ppl 5.24 | wps 64560.8 | ups 0.14 | wpb 474183 | bsz 1023.5 | num_updates 65680 | lr 0.00236687 | gnorm 0.466 | loss_scale 16 | train_wall 10471 | gb_free 8.4 | wall 168148
+2021-09-01 14:46:41 | INFO | fairseq.trainer | begin training epoch 47
+2021-09-01 14:46:41 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-01 14:52:19 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 15:23:40 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 15:55:08 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 16:26:35 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 16:57:59 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 17:29:22 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 17:41:36 | INFO | fairseq_cli.train | end of epoch 47 (average epoch stats below)
+2021-09-01 17:41:36 | INFO | train | epoch 047 | loss 2.386 | ppl 5.23 | wps 64476 | ups 0.14 | wpb 474198 | bsz 1023.5 | num_updates 67107 | lr 0.00235245 | gnorm 0.466 | loss_scale 16 | train_wall 10470 | gb_free 8.6 | wall 178643
+2021-09-01 17:41:36 | INFO | fairseq.trainer | begin training epoch 48
+2021-09-01 17:41:36 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-01 18:00:54 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 18:32:29 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 19:04:04 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 19:35:38 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 20:07:02 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 20:37:12 | INFO | fairseq_cli.train | end of epoch 48 (average epoch stats below)
+2021-09-01 20:37:12 | INFO | train | epoch 048 | loss 2.383 | ppl 5.22 | wps 64269.4 | ups 0.14 | wpb 474172 | bsz 1023.5 | num_updates 68535 | lr 0.00233803 | gnorm 0.469 | loss_scale 16 | train_wall 10508 | gb_free 8.2 | wall 189179
+2021-09-01 20:37:12 | INFO | fairseq.trainer | begin training epoch 49
+2021-09-01 20:37:12 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-01 20:38:33 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 21:10:14 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 21:41:44 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 22:13:13 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 22:44:50 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 23:16:22 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-01 23:32:48 | INFO | fairseq_cli.train | end of epoch 49 (average epoch stats below)
+2021-09-01 23:32:48 | INFO | train | epoch 049 | loss 2.379 | ppl 5.2 | wps 64221.1 | ups 0.14 | wpb 474190 | bsz 1023.5 | num_updates 69962 | lr 0.00232362 | gnorm 0.47 | loss_scale 16 | train_wall 10511 | gb_free 8.3 | wall 199715
+2021-09-01 23:32:49 | INFO | fairseq.trainer | begin training epoch 50
+2021-09-01 23:32:49 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-01 23:37:30 | INFO | train_inner | epoch 050:     38 / 1433 loss=2.384, ppl=5.22, wps=64349, ups=0.14, wpb=474170, bsz=1023.5, num_updates=70000, lr=0.00232323, gnorm=0.468, loss_scale=16, train_wall=36752, gb_free=8.2, wall=199997
+2021-09-01 23:48:03 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 00:19:44 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 00:51:18 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 01:23:17 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 01:54:54 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 02:26:23 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 02:28:50 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 50 @ 71389 updates
+2021-09-02 02:28:50 | INFO | fairseq.trainer | Saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint50.pt
+2021-09-02 02:29:02 | INFO | fairseq.trainer | Finished saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint50.pt
+2021-09-02 02:29:10 | INFO | fairseq.checkpoint_utils | Saved checkpoint ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint50.pt (epoch 50 @ 71389 updates, score None) (writing took 19.47103246487677 seconds)
+2021-09-02 02:29:10 | INFO | fairseq_cli.train | end of epoch 50 (average epoch stats below)
+2021-09-02 02:29:10 | INFO | train | epoch 050 | loss 2.375 | ppl 5.19 | wps 63949.5 | ups 0.13 | wpb 474186 | bsz 1023.5 | num_updates 71389 | lr 0.0023092 | gnorm 0.472 | loss_scale 16 | train_wall 10535 | gb_free 8.2 | wall 210296
+2021-09-02 02:29:10 | INFO | fairseq.trainer | begin training epoch 51
+2021-09-02 02:29:10 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-02 02:58:16 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 03:30:04 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 04:01:38 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 04:33:12 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 05:04:58 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 05:25:15 | INFO | fairseq_cli.train | end of epoch 51 (average epoch stats below)
+2021-09-02 05:25:15 | INFO | train | epoch 051 | loss 2.372 | ppl 5.18 | wps 64091.6 | ups 0.14 | wpb 474180 | bsz 1023.5 | num_updates 72817 | lr 0.00229478 | gnorm 0.475 | loss_scale 16 | train_wall 10539 | gb_free 8.3 | wall 220861
+2021-09-02 05:25:15 | INFO | fairseq.trainer | begin training epoch 52
+2021-09-02 05:25:15 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-02 05:36:33 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 05:42:20 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 8.0
+2021-09-02 06:45:20 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 07:16:58 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 07:48:38 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 08:20:14 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 08:21:20 | INFO | fairseq_cli.train | end of epoch 52 (average epoch stats below)
+2021-09-02 08:21:20 | INFO | train | epoch 052 | loss 2.368 | ppl 5.16 | wps 64043.9 | ups 0.14 | wpb 474182 | bsz 1023.5 | num_updates 74244 | lr 0.00228036 | gnorm 0.477 | loss_scale 16 | train_wall 10539 | gb_free 8.3 | wall 231427
+2021-09-02 08:21:20 | INFO | fairseq.trainer | begin training epoch 53
+2021-09-02 08:21:20 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-02 08:40:25 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 8.0
+2021-09-02 09:43:32 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 09:54:36 | INFO | train_inner | epoch 053:    758 / 1433 loss=2.37, ppl=5.17, wps=64039.3, ups=0.14, wpb=474230, bsz=1023.6, num_updates=75000, lr=0.00227273, gnorm=0.475, loss_scale=16, train_wall=36914, gb_free=8.2, wall=237023
+2021-09-02 10:15:10 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 10:46:42 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 11:17:34 | INFO | fairseq_cli.train | end of epoch 53 (average epoch stats below)
+2021-09-02 11:17:34 | INFO | train | epoch 053 | loss 2.365 | ppl 5.15 | wps 64086.6 | ups 0.14 | wpb 474197 | bsz 1023.5 | num_updates 75673 | lr 0.00226593 | gnorm 0.477 | loss_scale 16 | train_wall 10546 | gb_free 8.2 | wall 242001
+2021-09-02 11:17:34 | INFO | fairseq.trainer | begin training epoch 54
+2021-09-02 11:17:34 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-02 11:18:19 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 11:49:53 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 12:21:28 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 12:53:03 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 13:24:38 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 13:56:10 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 14:13:40 | INFO | fairseq_cli.train | end of epoch 54 (average epoch stats below)
+2021-09-02 14:13:40 | INFO | train | epoch 054 | loss 2.361 | ppl 5.14 | wps 64041.7 | ups 0.14 | wpb 474182 | bsz 1023.5 | num_updates 77100 | lr 0.00225152 | gnorm 0.479 | loss_scale 16 | train_wall 10538 | gb_free 8.2 | wall 252567
+2021-09-02 14:13:40 | INFO | fairseq.trainer | begin training epoch 55
+2021-09-02 14:13:40 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-02 14:27:49 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 14:59:29 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 15:15:21 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 8.0
+2021-09-02 16:18:23 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 16:50:03 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 17:09:50 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 55 @ 78528 updates
+2021-09-02 17:09:50 | INFO | fairseq.trainer | Saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint55.pt
+2021-09-02 17:10:01 | INFO | fairseq.trainer | Finished saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint55.pt
+2021-09-02 17:10:10 | INFO | fairseq.checkpoint_utils | Saved checkpoint ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint55.pt (epoch 55 @ 78528 updates, score None) (writing took 20.388677675276995 seconds)
+2021-09-02 17:10:10 | INFO | fairseq_cli.train | end of epoch 55 (average epoch stats below)
+2021-09-02 17:10:10 | INFO | train | epoch 055 | loss 2.358 | ppl 5.13 | wps 63935.4 | ups 0.13 | wpb 474162 | bsz 1023.5 | num_updates 78528 | lr 0.00223709 | gnorm 0.481 | loss_scale 16 | train_wall 10544 | gb_free 8.2 | wall 263157
+2021-09-02 17:10:11 | INFO | fairseq.trainer | begin training epoch 56
+2021-09-02 17:10:11 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-02 17:21:57 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 17:53:43 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 18:25:19 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 18:56:52 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 19:28:17 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 19:59:43 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 20:05:42 | INFO | fairseq_cli.train | end of epoch 56 (average epoch stats below)
+2021-09-02 20:05:42 | INFO | train | epoch 056 | loss 2.354 | ppl 5.11 | wps 64252.4 | ups 0.14 | wpb 474184 | bsz 1023.5 | num_updates 79955 | lr 0.00222268 | gnorm 0.482 | loss_scale 16 | train_wall 10506 | gb_free 8.2 | wall 273688
+2021-09-02 20:05:42 | INFO | fairseq.trainer | begin training epoch 57
+2021-09-02 20:05:42 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-02 20:11:13 | INFO | train_inner | epoch 057:     45 / 1433 loss=2.359, ppl=5.13, wps=64076.3, ups=0.14, wpb=474124, bsz=1023.5, num_updates=80000, lr=0.00222222, gnorm=0.481, loss_scale=16, train_wall=36882, gb_free=8.4, wall=274020
+2021-09-02 20:26:47 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 8.0
+2021-09-02 21:29:27 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 22:00:54 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 22:32:20 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-02 22:48:29 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 8.0
+2021-09-02 23:00:57 | INFO | fairseq_cli.train | end of epoch 57 (average epoch stats below)
+2021-09-02 23:00:57 | INFO | train | epoch 057 | loss 2.352 | ppl 5.1 | wps 64396.9 | ups 0.14 | wpb 474173 | bsz 1023.5 | num_updates 81383 | lr 0.00220825 | gnorm 0.485 | loss_scale 8 | train_wall 10490 | gb_free 8.2 | wall 284203
+2021-09-02 23:00:57 | INFO | fairseq.trainer | begin training epoch 58
+2021-09-02 23:00:57 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-02 23:51:08 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-03 00:22:34 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-03 00:53:54 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-03 01:25:28 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-03 01:56:01 | INFO | fairseq_cli.train | end of epoch 58 (average epoch stats below)
+2021-09-03 01:56:01 | INFO | train | epoch 058 | loss 2.348 | ppl 5.09 | wps 64507.9 | ups 0.14 | wpb 474184 | bsz 1023.5 | num_updates 82812 | lr 0.00219382 | gnorm 0.484 | loss_scale 16 | train_wall 10478 | gb_free 8.3 | wall 294708
+2021-09-03 01:56:01 | INFO | fairseq.trainer | begin training epoch 59
+2021-09-03 01:56:01 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-03 01:56:52 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-03 02:23:01 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 8.0
+2021-09-03 03:18:08 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 8.0
+2021-09-03 03:32:06 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 4.0
+2021-09-03 04:51:06 | INFO | fairseq_cli.train | end of epoch 59 (average epoch stats below)
+2021-09-03 04:51:06 | INFO | train | epoch 059 | loss 2.346 | ppl 5.08 | wps 64502.6 | ups 0.14 | wpb 474201 | bsz 1023.5 | num_updates 84241 | lr 0.00217938 | gnorm 0.487 | loss_scale 16 | train_wall 10480 | gb_free 8.2 | wall 305213
+2021-09-03 04:51:06 | INFO | fairseq.trainer | begin training epoch 60
+2021-09-03 04:51:06 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-03 05:06:02 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-03 05:37:34 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-03 06:08:56 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-03 06:24:20 | INFO | train_inner | epoch 060:    762 / 1433 loss=2.347, ppl=5.09, wps=64449.2, ups=0.14, wpb=474180, bsz=1023.6, num_updates=85000, lr=0.00217172, gnorm=0.486, loss_scale=16, train_wall=36698, gb_free=8.5, wall=310807
+2021-09-03 06:40:22 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-03 07:11:47 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-03 07:31:04 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 8.0
+2021-09-03 07:46:20 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 60 @ 85668 updates
+2021-09-03 07:46:20 | INFO | fairseq.trainer | Saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint60.pt
+2021-09-03 07:46:31 | INFO | fairseq.trainer | Finished saving checkpoint to ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint60.pt
+2021-09-03 07:46:39 | INFO | fairseq.checkpoint_utils | Saved checkpoint ./cn-wiki/slstm1792_ln-003_posinput-dp0/checkpoint60.pt (epoch 60 @ 85668 updates, score None) (writing took 18.958343038335443 seconds)
+2021-09-03 07:46:39 | INFO | fairseq_cli.train | end of epoch 60 (average epoch stats below)
+2021-09-03 07:46:39 | INFO | train | epoch 060 | loss 2.342 | ppl 5.07 | wps 64247.8 | ups 0.14 | wpb 474222 | bsz 1023.5 | num_updates 85668 | lr 0.00216497 | gnorm 0.488 | loss_scale 8 | train_wall 10488 | gb_free 8.2 | wall 315746
+2021-09-03 07:46:39 | INFO | fairseq.trainer | begin training epoch 61
+2021-09-03 07:46:39 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-03 08:29:10 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 8.0
+2021-09-03 09:32:00 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-03 10:03:25 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-03 10:34:49 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-03 10:41:46 | INFO | fairseq_cli.train | end of epoch 61 (average epoch stats below)
+2021-09-03 10:41:46 | INFO | train | epoch 061 | loss 2.34 | ppl 5.06 | wps 64491.8 | ups 0.14 | wpb 474192 | bsz 1023.5 | num_updates 87097 | lr 0.00215054 | gnorm 0.49 | loss_scale 16 | train_wall 10482 | gb_free 8.4 | wall 326253
+2021-09-03 10:41:46 | INFO | fairseq.trainer | begin training epoch 62
+2021-09-03 10:41:46 | INFO | fairseq_cli.train | Start iterating over samples
+2021-09-03 11:06:14 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-03 11:37:36 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 16.0
+2021-09-03 11:51:35 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 8.0
+2021-09-03 12:35:54 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 8.0
+2021-09-03 13:36:57 | INFO | fairseq_cli.train | end of epoch 62 (average epoch stats below)
+2021-09-03 13:36:57 | INFO | train | epoch 062 | loss 2.335 | ppl 5.05 | wps 64472.4 | ups 0.14 | wpb 474193 | bsz 1023.5 | num_updates 88526 | lr 0.0021361 | gnorm 0.492 | loss_scale 16 | train_wall 10485 | gb_free 8.4 | wall 336763
+2021-09-03 13:36:57 | INFO | fairseq.trainer | begin training epoch 63

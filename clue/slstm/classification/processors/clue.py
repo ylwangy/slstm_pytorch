@@ -84,7 +84,7 @@ def clue_convert_examples_to_features(examples, tokenizer,
 
     features = []
     for (ex_index, example) in enumerate(examples):
-        if ex_index % 10000 == 0:
+        if ex_index % 100 == 0:
             logger.info("Writing example %d" % (ex_index))
 
         # print(example.text_a)
@@ -239,7 +239,6 @@ class IflytekProcessor(DataProcessor):
             examples.append(
                 InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
         return examples
-
 
 
 class AfqmcProcessor(DataProcessor):
@@ -425,16 +424,26 @@ class WscProcessor(DataProcessor):
             pronoun_idx = target['span2_index']
             assert text_a[pronoun_idx: (pronoun_idx + len(pronoun))] == pronoun, "pronoun: {}".format(pronoun)
             assert text_a[query_idx: (query_idx + len(query))] == query, "query: {}".format(query)
+            # if pronoun_idx > query_idx:
+            #     text_a_list.insert(query_idx, "_")
+            #     text_a_list.insert(query_idx + len(query) + 1, "_")
+            #     text_a_list.insert(pronoun_idx + 2, "[")
+            #     text_a_list.insert(pronoun_idx + len(pronoun) + 2 + 1, "]")
+            # else:
+            #     text_a_list.insert(pronoun_idx, "[")
+            #     text_a_list.insert(pronoun_idx + len(pronoun) + 1, "]")
+            #     text_a_list.insert(query_idx + 2, "_")
+            #     text_a_list.insert(query_idx + len(query) + 2 + 1, "_")
             if pronoun_idx > query_idx:
-                text_a_list.insert(query_idx, "_")
-                text_a_list.insert(query_idx + len(query) + 1, "_")
+                text_a_list.insert(query_idx, "【")
+                text_a_list.insert(query_idx + len(query) + 1, "】")
                 text_a_list.insert(pronoun_idx + 2, "[")
                 text_a_list.insert(pronoun_idx + len(pronoun) + 2 + 1, "]")
             else:
                 text_a_list.insert(pronoun_idx, "[")
                 text_a_list.insert(pronoun_idx + len(pronoun) + 1, "]")
-                text_a_list.insert(query_idx + 2, "_")
-                text_a_list.insert(query_idx + len(query) + 2 + 1, "_")
+                text_a_list.insert(query_idx + 2, "【")
+                text_a_list.insert(query_idx + len(query) + 2 + 1, "】")
             text_a = "".join(text_a_list)
             # print(text_a)
             # aa=input()

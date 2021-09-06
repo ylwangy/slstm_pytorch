@@ -216,7 +216,7 @@ class SlstmModel(FairseqEncoderModel):
             return F.softmax(logits, dim=-1)
 
     def register_classification_head(
-        self, name, num_classes=None, inner_dim=None, **kwargs
+        self, name, num_classes=None, inner_dim=None, use_dense=True, **kwargs
     ):
         """Register a classification head."""
         if name in self.classification_heads:
@@ -233,6 +233,7 @@ class SlstmModel(FairseqEncoderModel):
             input_dim=self.args.encoder_embed_dim,
             inner_dim=inner_dim or self.args.encoder_embed_dim,
             num_classes=num_classes,
+            use_dense = use_dense,
             activation_fn=self.args.pooler_activation_fn,
             pooler_dropout=self.args.pooler_dropout,
             q_noise=self.args.quant_noise_pq,
@@ -386,6 +387,7 @@ class SlstmClassificationHead(nn.Module):
         input_dim,
         inner_dim,
         num_classes,
+        use_dense,
         activation_fn,
         pooler_dropout=0.1,
         q_noise=0,
@@ -393,13 +395,14 @@ class SlstmClassificationHead(nn.Module):
         do_spectral_norm=False,
     ):
         super().__init__()
-        # self.dense = nn.Linear(input_dim, inner_dim)
-        # self.activation_fn = utils.get_activation_fn(activation_fn)
+        self.dense = nn.Linear(input_dim, inner_dim)
+        self.use_dense = use_dense
+        self.activation_fn = utils.get_activation_fn(activation_fn)
         self.dropout = nn.Dropout(p=pooler_dropout)
-        self.classifier = nn.Linear(input_dim, num_classes)
-        # self.out_proj = apply_quant_noise_(
-        #     nn.Linear(inner_dim, num_classes), q_noise, qn_block_size
-        # )
+        # self.classifier = nn.Linear(input_dim, num_classes)
+        self.out_proj = apply_quant_noise_(
+            nn.Linear(inner_dim, num_classes), q_noise, qn_block_size
+        )
         # if do_spectral_norm:
         #     if q_noise != 0:
         #         raise NotImplementedError(
@@ -410,11 +413,16 @@ class SlstmClassificationHead(nn.Module):
     def forward(self, features, **kwargs):
         # x = features[:, 0, :]  # take <s> token (equiv. to [CLS])
         ############################## already use global node
-        x = self.dropout(features)
-        x = self.classifier(x)
-        # x = self.activation_fn(x)
-        # x = self.dropout(x)
-        # x = self.out_proj(x)
+        if self.use_dense:
+            x = self.dropout(features)
+            x = self.dense(x)
+            x = self.activation_fn(x)
+            x = self.dropout(x)
+            x = self.out_proj(x)
+        else:
+           x = self.dropout(features) 
+           x = self.activation_fn(x)
+           x = self.out_proj(x)
         return x
 
 
