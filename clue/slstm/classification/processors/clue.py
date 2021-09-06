@@ -91,7 +91,7 @@ def clue_convert_examples_to_features(examples, tokenizer,
         # print(example.text_b)
         sent_ids=tokenizer.encode(example.text_a) 
 
-        print(sent_ids)
+        # print(sent_ids)#4450, 3378, 3, 2375
 
 
         # aa=input()
@@ -112,6 +112,7 @@ def clue_convert_examples_to_features(examples, tokenizer,
             for id_ in sent_ids2:
                 input_ids.append(id_ + 4)   # bos pad eos unk 4,......,30004, mask
             input_ids.append(2) #eos     
+        input_ids = input_ids[:max_length]
         input_len = len(input_ids)
         padding_length = max_length - len(input_ids)
 
@@ -144,14 +145,14 @@ def clue_convert_examples_to_features(examples, tokenizer,
         else:
             raise KeyError(output_mode)
 
-        if ex_index < 5:
-            logger.info("*** Example ***")
-            logger.info("guid: %s" % (example.guid))
-            logger.info("input_ids: %s" % " ".join([str(x) for x in input_ids]))
-            # logger.info("attention_mask: %s" % " ".join([str(x) for x in attention_mask]))
-            # logger.info("token_type_ids: %s" % " ".join([str(x) for x in token_type_ids]))
-            logger.info("label: %s (id = %d)" % (example.label, label))
-            logger.info("input length: %d" % (input_len))
+        # if ex_index < 5:
+        #     logger.info("*** Example ***")
+        #     logger.info("guid: %s" % (example.guid))
+        #     logger.info("input_ids: %s" % " ".join([str(x) for x in input_ids]))
+        #     # logger.info("attention_mask: %s" % " ".join([str(x) for x in attention_mask]))
+        #     # logger.info("token_type_ids: %s" % " ".join([str(x) for x in token_type_ids]))
+        #     logger.info("label: %s (id = %d)" % (example.label, label))
+        #     logger.info("input length: %d" % (input_len))
 
         features.append(
             InputFeatures(input_ids=input_ids,
@@ -238,6 +239,8 @@ class IflytekProcessor(DataProcessor):
             examples.append(
                 InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
         return examples
+
+
 
 class AfqmcProcessor(DataProcessor):
     """Processor for the AFQMC data set (CLUE version)."""
@@ -519,10 +522,6 @@ clue_tasks_num_labels = {
     'wsc': 2,
     'copa': 2,
     'tnews': 15,
-    'mysenti': 3,
-    'mystyle': 4,
-    'mysenti2': 3,
-    'mystyle2': 4,
 }
 
 clue_processors = {
