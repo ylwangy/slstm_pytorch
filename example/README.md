@@ -9,10 +9,10 @@ from fairseq.models.slstm import SlstmModel
 
 ### load sentencepiece model
 tokenizer = spm.SentencePieceProcessor()
-tokenizer.Load('/nfs/users/wangyile/sentencepiece/build/src/giga_wiki_news_cn_nospecial.model')
+tokenizer.Load('TOKENIZER_PATH/giga_wiki_news_cn_nospecial.model')
 
 ### load lstm model
-slstm = SlstmModel.from_pretrained('/nfs/users/wangyile/fairseq/fairseq/models/slstm/cn-wiki/slstm1792_ln-003_posinput-dp0/', checkpoint_file='checkpoint_last.pt')
+slstm = SlstmModel.from_pretrained('MODEL_PATH/slstm1792_ln-003_posinput-dp0/', checkpoint_file='checkpoint_last.pt')
 
 slstm.cuda()
 slstm.eval()
@@ -66,9 +66,9 @@ print(index)
 
 ### verify mask language model --- en
 tokenizer = spm.SentencePieceProcessor()
-tokenizer.Load('/nfs/users/wangyile/sentencepiece/build/src/wiki_books_openweb_nospecial.model')
+tokenizer.Load('TOKENIZER_PATH/wiki_books_openweb_nospecial.model')
 
-slstm = SlstmModel.from_pretrained('/nfs/users/wangyile/fairseq/fairseq/models/slstm/en-wiki/slstm1792_ln-003_posinput-dp0/', checkpoint_file='checkpoint_last.pt')
+slstm = SlstmModel.from_pretrained('MODEL_PATH/slstm1792_ln-003_posinput-dp0/', checkpoint_file='checkpoint_last.pt')
 
 slstm.cuda()
 slstm.eval()

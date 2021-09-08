@@ -30,7 +30,7 @@ vocab_cn.txt 及 vocab_en.txt
 import sentencepiece as spm
 
 sp = spm.SentencePieceProcessor()
-sp.Load('/nfs/users/wangyile/sentencepiece/build/src/giga_wiki_news_cn_nospecial.model')
+sp.Load('./giga_wiki_news_cn_nospecial.model')
 
 sent_tokens=sp.encode('北京是中国的首都', out_type=str)
 print(sent_tokens)# '▁北京', '是中国', '的', '首都'
@@ -39,7 +39,7 @@ sent_ids=sp.encode('北京是中国的首都')
 print(sent_ids)# 4450, 3378, 3, 2375
 
 sp = spm.SentencePieceProcessor()
-sp.Load('/nfs/users/wangyile/sentencepiece/build/src/wiki_books_openweb_nospecial.model')
+sp.Load('./wiki_books_openweb_nospecial.model')
 
 sent_tokens=sp.encode('Beijing is the captial of China', out_type=str)
 print(sent_tokens)# '▁Beijing', '▁is', '▁the', '▁cap', 't', 'ial', '▁of', '▁China'

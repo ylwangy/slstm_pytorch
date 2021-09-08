@@ -543,15 +543,15 @@ def main():
     
 
     tokenizer = spm.SentencePieceProcessor()
-    tokenizer.Load('/nfs/users/wangyile/sentencepiece/build/src/giga_wiki_news_cn_nospecial.model')
+    tokenizer.Load('TOKENIZER_PATH/giga_wiki_news_cn_nospecial.model')
 
 
-    slstm = SlstmModel.from_pretrained('/nfs/users/wangyile/fairseq/fairseq/models/slstm/cn-wiki/slstm1792_ln-003_posinput-dp0/', checkpoint_file='checkpoint60.pt')
+    slstm = SlstmModel.from_pretrained('MODEL_PATH/slstm1792_ln-003_posinput-dp0/', checkpoint_file='checkpoint60.pt')
     model = slstm.model
     if args.task_name=='tnews':
-        model.register_classification_head('tnews',num_classes=15)
+        model.register_classification_head('tnews',num_classes=15,use_dense=False)
     elif args.task_name=='iflytek':
-        model.register_classification_head('iflytek',num_classes=119)
+        model.register_classification_head('iflytek',num_classes=119,use_dense=False)
     elif args.task_name=='wsc':
          model.register_classification_head('wsc',num_classes=2,use_dense=False)
     else:
