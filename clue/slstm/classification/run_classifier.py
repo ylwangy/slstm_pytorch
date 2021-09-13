@@ -617,19 +617,19 @@ def main():
     if args.do_predict and args.local_rank in [-1, 0]:
         # print('=================')
         if args.task_name == 'afqmc':
-            args.output_dir = '/nfs/users/wangyile/clue/baselines/models_pytorch/classifier_pytorch/afqmc_output/bert/checkpoint-6438'
+            args.output_dir = '/nfs/users/YOUR_PATH/clue/baselines/models_pytorch/classifier_pytorch/afqmc_output/bert/checkpoint-6438'
         elif args.task_name == 'ocnli':
-            args.output_dir = '/nfs/users/wangyile/clue/baselines/models_pytorch/classifier_pytorch/ocnli_output/bert/checkpoint-48974'
+            args.output_dir = '/nfs/users/YOUR_PATH/clue/baselines/models_pytorch/classifier_pytorch/ocnli_output/bert/checkpoint-48974'
         elif args.task_name == 'csl':
-            args.output_dir = '/nfs/users/wangyile/clue/baselines/models_pytorch/classifier_pytorch/csl_output/bert/checkpoint-12500'
+            args.output_dir = '/nfs/users/YOUR_PATH/clue/baselines/models_pytorch/classifier_pytorch/csl_output/bert/checkpoint-12500'
         elif args.task_name == 'tnews':
-            args.output_dir = '/nfs/users/wangyile/clue/baselines/models_pytorch/classifier_pytorch/tnews_output/bert/checkpoint-10005'
+            args.output_dir = '/nfs/users/YOUR_PATH/clue/baselines/models_pytorch/classifier_pytorch/tnews_output/bert/checkpoint-10005'
         elif args.task_name == 'wsc':
-            args.output_dir = '/nfs/users/wangyile/clue/baselines/models_pytorch/classifier_pytorch/wsc_output/bert/checkpoint-3876'
+            args.output_dir = '/nfs/users/YOUR_PATH/clue/baselines/models_pytorch/classifier_pytorch/wsc_output/bert/checkpoint-3876'
         elif args.task_name == 'iflytek':
-            args.output_dir = '/nfs/users/wangyile/clue/baselines/models_pytorch/classifier_pytorch/iflytek_output/bert/checkpoint-2277'
+            args.output_dir = '/nfs/users/YOUR_PATH/clue/baselines/models_pytorch/classifier_pytorch/iflytek_output/bert/checkpoint-2277'
         elif args.task_name == 'cmnli':
-            args.output_dir = '/nfs/users/wangyile/clue/baselines/models_pytorch/classifier_pytorch/cmnli_output/bert/checkpoint-73461'
+            args.output_dir = '/nfs/users/YOUR_PATH/clue/baselines/models_pytorch/classifier_pytorch/cmnli_output/bert/checkpoint-73461'
         else:
             raise ValueError(" Task ({}) error.".format(args.task_name))
 
