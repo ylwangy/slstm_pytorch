@@ -36,7 +36,10 @@ clue
 glue
 | model  | 参数    | MNLI  | QNLI | QQP   | RTE   | SST | MRPC  | CoLA | STS | WNLI | 
 | :----:| :----: | :----: | :----: |:----: |:----: |:----: |:----: |:----: |:----: |:----: |
-
+| BERT_Large |  |  |  |  |  |  |  | 60.6 |  |  |
+| XLNet_Large |  |  |  |  |  |  |  | 60.6 |  |  |
+| RoBERTa_Large |  |  |  |  |  |  |  | 60.6 |  |  |
+| Ours |  |  |  |  |  |  |  | 60.6 |  |  |
 
 QA
 | model  | 参数    | SQUAD 1.1  | SQUAD 2.0 | RACE | SWAG |
