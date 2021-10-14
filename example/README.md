@@ -92,10 +92,25 @@ tokens = tokens.unsqueeze(0)
 
 h, _, _, g = slstm.model(tokens.long().cuda(),features_only=False,return_all_hiddens=False)
 logits = h[0, mask_position, :].squeeze()
-
+print(h)
 prob = logits.softmax(dim=0)
 values, index = prob.topk(k=10, dim=0)
 print(index) 
 # 6489,   710,  7826,  1053,  7270,  1152, 15913,    33,  5299, 14253
 # Beijing , China, Taiwan, India, ...
+
+
+
+########### save & load model ############
+torch.save(slstm.model, './save_model.pkl')
+checkpoint = torch.load('./save_model.pkl')
+
+checkpoint.cuda()
+checkpoint.eval()
+h, _, _, g = checkpoint(tokens.long().cuda(),features_only=False,return_all_hiddens=False)
+print(h)
+
+
+
+
 ```
