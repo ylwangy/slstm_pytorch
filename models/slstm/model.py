@@ -893,6 +893,16 @@ def slstm1792_ln_posinput_architecture(args):
     args.pos_g2h = getattr(args, "pos_g2h", False)
     args.pos_input = getattr(args, "pos_input", True)
     base_architecture(args)
+    
+@register_model_architecture("slstm", "slstm1280_ln_posinput_layer24")
+def slstm1280_ln_posinput_layer24_architecture(args):
+    args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 1280)
+    args.ln = getattr(args, "ln", True)
+    args.pos_h2g = getattr(args, "pos_h2g", False)
+    args.pos_g2h = getattr(args, "pos_g2h", False)
+    args.pos_input = getattr(args, "pos_input", True)
+    args.encoder_layers = getattr(args, "encoder_layers", 24)
+    base_architecture(args)
 
 
 @register_model_architecture("slstm", "slstm2048")
