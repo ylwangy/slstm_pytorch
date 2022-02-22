@@ -13,6 +13,8 @@
 
 3.pip install 配置环境 
 
+4.预处理数据，修改train.sh并运行
+
 # 使用模型
 
 参考example
