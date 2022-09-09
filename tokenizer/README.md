@@ -1,13 +1,13 @@
-tokenizer 采用 [Sentencepiece](https://github.com/google/sentencepiece) 
+we use [Sentencepiece](https://github.com/google/sentencepiece) as tokenizer
 
-# 输出模型
+# output models
 giga_wiki_news_cn_nospecial.model 及 wiki_books_openweb_nospecial.model
 
-# 输出词表
+# output vocabulary
 vocab_cn.txt 及 vocab_en.txt 
 
 
-# 训练脚本
+# training scripts
 
 ``` python
 ./spm_train \
@@ -24,7 +24,7 @@ vocab_cn.txt 及 vocab_en.txt
 
 ```
 
-# 使用方法:
+# example
 
 ``` python
 import sentencepiece as spm
