@@ -360,21 +360,14 @@ class SlstmLMHead(nn.Module):
         self.bias = nn.Parameter(torch.zeros(output_dim))
 
     def forward(self, features, masked_tokens=None, **kwargs):
-        # Only project the masked tokens while training,
-        # saves both memory and computation
 
-        # print('------')
-        # print(features.size())   #bsz seqlen dim
-        # print(masked_tokens)
-        # print(masked_tokens.size()) #bsz seqlen
         if masked_tokens is not None:
             features = features[masked_tokens, :]
 
-        # print(features.size())  #mask size  dim
         x = self.dense(features)
         x = self.activation_fn(x)
         x = self.layer_norm(x)
-        # project back to size of vocabulary with bias
+
         x = F.linear(x, self.weight) + self.bias
         return x
 
@@ -688,7 +681,7 @@ class SLSTM_block(nn.Module):
         word_x = word_h.view(-1, shape[-1])
         Ux = self.U_t_ilrfsou(word_x)
         word_c = word_h
-        # print(word_h.size())
+        
         sequence_mask = torch.unsqueeze(1 - mask.type(torch.cuda.HalfTensor), dim=2)  #1.0     32,420,1
         sequence_lengths = torch.sum(sequence_mask, dim=1)# len1,...len_bsz  32,1
 
@@ -706,13 +699,13 @@ class SLSTM_block(nn.Module):
         mask_softmax_score_expanded = torch.unsqueeze(mask_softmax_score, dim=2).type(torch.cuda.HalfTensor) 
 
         for layer_idx in range(self.num_layers):
-            # print(word_h.size())
+            
             word_h_before = [(self.get_h_before(padding_list[step], word_h, step + 1)* sequence_mask).view(-1, hidden_size) for step in range(self.slstm_kernel_size)]
             word_h_before = sum(word_h_before)
 
             word_h_after = [(self.get_h_after(padding_list[step], word_h, step + 1)* sequence_mask).view(-1, hidden_size) for step in range(self.slstm_kernel_size)]
             word_h_after = sum(word_h_after)
-            # print(word_c.size())
+            
             word_c_before = [(self.get_h_before(padding_list[step], word_c, step + 1)* sequence_mask).view(-1, hidden_size) for step in range(self.slstm_kernel_size)]
             word_c_before = sum(word_c_before)
 
