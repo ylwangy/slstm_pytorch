@@ -114,31 +114,8 @@ def train(args, train_dataset, model, tokenizer):
         for step, batch in enumerate(train_dataloader):
             model.train()
             batch = tuple(t.to(args.device) for t in batch)
-            # print(batch[0])
-            # print(batch[1])
             inputs = {'input_ids': batch[0]}
-            # inputs = {'input_ids': batch[0],
-            #           'attention_mask': batch[1],
-            #           'labels': batch[3]}
-            # if args.model_type != 'distilbert':
-            #     inputs['token_type_ids'] = batch[2] if args.model_type in ['bert', 'xlnet', 'albert',
-            #                                                                'roberta'] else None  # XLM, DistilBERT and RoBERTa don't use segment_ids
-            # outputs = model(**inputs)
-            
-
-
-            # inputs = {'input_ids': batch[0],
-            #           'attention_mask': batch[1],
-            #           'labels': batch[3]}
-            # if args.model_type != 'distilbert':
-            #     inputs['token_type_ids'] = batch[2] if args.model_type in ['bert', 'xlnet', 'albert',
-                                                                        #    'roberta'] else None  # XLM, DistilBERT don't use segment_ids
-            # outputs = model(**inputs)
             h, _, _, g  = model(batch[0],features_only=True,classification_head_name=args.task_name,return_all_hiddens=False)
-            # print(h.size())
-            # print(g.size())
-            # print(loss_fct(g , batch[1]))
-            # loss = outputs[0]  # print(loss)#tensor(2.8745, device='cuda:0', grad_fn=<NllLossBackward>)
             loss = loss_fct(g , batch[1])
             # aa=input()
             if args.n_gpu > 1:
@@ -162,24 +139,7 @@ def train(args, train_dataset, model, tokenizer):
                 model.zero_grad()
                 global_step += 1
 
-                # if args.local_rank in [-1, 0] and args.logging_steps > 0 and global_step % args.logging_steps == 0:
-                #     print(" ")
-                #     # Log metrics
-                #     if args.local_rank == -1:  # Only evaluate when single GPU otherwise metrics may not average well
-                #         results = evaluate(args, model, tokenizer)
-                ###TODO SAVE models
-                # if args.local_rank in [-1, 0] and args.save_steps > 0 and global_step % args.save_steps == 0:
-                #     # Save model checkpoint
-                #     output_dir = os.path.join(args.output_dir, 'checkpoint-{}'.format(global_step))
-                #     if not os.path.exists(output_dir):
-                #         os.makedirs(output_dir)
-                #     model_to_save = model.module if hasattr(model,
-                #                                             'module') else model  # Take care of distributed/parallel training
-                #     model_to_save.save_pretrained(output_dir)
-                #     torch.save(args, os.path.join(output_dir, 'training_args.bin'))
-                #     logger.info("Saving model checkpoint to %s", output_dir)
-                #     tokenizer.save_vocabulary(vocab_path=output_dir)
-        print(" ")
+               
         if 'cuda' in str(args.device):
             torch.cuda.empty_cache()
         results = evaluate(args, model, tokenizer)
@@ -222,12 +182,7 @@ def evaluate(args, model, tokenizer, prefix=""):
                 inputs = {'input_ids': batch[0]}
                 h, _, _, logits  = model(batch[0],features_only=True,classification_head_name=args.task_name,return_all_hiddens=False)
                 loss = loss_fct(logits , batch[1])
-
-
-
-                # tmp_eval_loss, logits = outputs[:2]
-                # eval_loss += tmp_eval_loss.mean().item()
-            # nb_eval_steps += 1
+                
             if preds is None:
                 preds = logits.detach().cpu().numpy()
                 out_label_ids = batch[1].detach().cpu().numpy()
@@ -245,11 +200,7 @@ def evaluate(args, model, tokenizer, prefix=""):
             preds = np.squeeze(preds)
         result = compute_metrics(eval_task, preds, out_label_ids)
         results.update(result)
-        # logger.info("  Num examples = %d", len(eval_dataset))
-        # logger.info("  Batch size = %d", args.eval_batch_size)
-        # logger.info("******** Eval results {} ********".format(prefix))
-        # for key in sorted(result.keys()):
-        #     logger.info(" dev: %s = %s", key, str(result[key]))
+
     return results
 
 
@@ -301,10 +252,7 @@ def predict(args, model, tokenizer, label_list, prefix=""):
                 else:
                     preds = np.append(preds, logits.detach().cpu().numpy(), axis=0)
             pbar(step)
-        # print('---------------')
-        # print(preds)
-        # print(len(preds))
-        # print(len(preds[0]))
+
         if args.output_mode == "classification":
             predict_label = np.argmax(preds, axis=1)
         elif args.output_mode == "regression":
@@ -322,14 +270,14 @@ def predict(args, model, tokenizer, label_list, prefix=""):
         output_submit_file = os.path.join(pred_output_dir, "test_prediction_new.json")
 
         output_logits_file = os.path.join(pred_output_dir, "test_logits")
-        # 保存标签结果
+
         with open(output_submit_file, "w") as writer:
             for i, pred in enumerate(predict_label):
                 json_d = {}
                 json_d['id'] = i
                 json_d['label'] = str(label_map[pred])
                 writer.write(json.dumps(json_d) + '\n')
-        # 保存中间预测结果
+
         save_numpy(file_path=output_logits_file, data=preds)
 
 
@@ -525,22 +473,10 @@ def main():
     # print(label_list)
 
     num_labels = len(label_list)
-    # print(num_labels)
-    # aa=input()
+
     # Load pretrained model and tokenizer
     if args.local_rank not in [-1, 0]:
         torch.distributed.barrier()  # Make sure only the first process in distributed training will download model & vocab
-
-    # args.model_type = args.model_type.lower()
-    # config_class, model_class, tokenizer_class = MODEL_CLASSES[args.model_type]
-    # config = config_class.from_pretrained(args.config_name if args.config_name else args.model_name_or_path,
-    #                                       num_labels=num_labels, finetuning_task=args.task_name)
-    # tokenizer = tokenizer_class.from_pretrained(args.tokenizer_name if args.tokenizer_name else args.model_name_or_path,
-    #                                             do_lower_case=args.do_lower_case)
-    # model = model_class.from_pretrained(args.model_name_or_path, from_tf=bool('.ckpt' in args.model_name_or_path),
-    #                                     config=config)
-
-    
 
     tokenizer = spm.SentencePieceProcessor()
     tokenizer.Load('TOKENIZER_PATH/giga_wiki_news_cn_nospecial.model')
@@ -569,51 +505,6 @@ def main():
         global_step, tr_loss = train(args, train_dataset, model, tokenizer)
         logger.info(" global_step = %s, average loss = %s", global_step, tr_loss)
 
-    # Saving best-practices: if you use defaults names for the model, you can reload it using from_pretrained()
-    # if args.do_train and (args.local_rank == -1 or torch.distributed.get_rank() == 0):
-    #     # Create output directory if needed
-    #     if not os.path.exists(args.output_dir) and args.local_rank in [-1, 0]:
-    #         os.makedirs(args.output_dir)
-
-    #     logger.info("Saving model checkpoint to %s", args.output_dir)
-    #     # Save a trained model, configuration and tokenizer using `save_pretrained()`.
-    #     # They can then be reloaded using `from_pretrained()`
-    #     model_to_save = model.module if hasattr(model,
-    #                                             'module') else model  # Take care of distributed/parallel training
-    #     model_to_save.save_pretrained(args.output_dir)
-    #     tokenizer.save_pretrained(args.output_dir)
-
-    #     # Good practice: save your training arguments together with the trained model
-    #     torch.save(args, os.path.join(args.output_dir, 'training_args.bin'))
-
-    #     # Load a trained model and vocabulary that you have fine-tuned
-    #     model = model_class.from_pretrained(args.output_dir)
-    #     tokenizer = tokenizer_class.from_pretrained(args.output_dir, do_lower_case=args.do_lower_case)
-    #     model.to(args.device)
-
-    # Evaluation
-    # results = {}
-    # if args.do_eval and args.local_rank in [-1, 0]:
-    #     tokenizer = tokenizer_class.from_pretrained(args.output_dir, do_lower_case=args.do_lower_case)
-    #     checkpoints = [args.output_dir]
-    #     if args.eval_all_checkpoints:
-    #         checkpoints = list(
-    #             os.path.dirname(c) for c in sorted(glob.glob(args.output_dir + '/**/' + WEIGHTS_NAME, recursive=True)))
-    #         logging.getLogger("transformers.modeling_utils").setLevel(logging.WARN)  # Reduce logging
-    #     logger.info("Evaluate the following checkpoints: %s", checkpoints)
-    #     for checkpoint in checkpoints:
-    #         global_step = checkpoint.split('-')[-1] if len(checkpoints) > 1 else ""
-    #         prefix = checkpoint.split('/')[-1] if checkpoint.find('checkpoint') != -1 else ""
-    #         model = model_class.from_pretrained(checkpoint)
-    #         model.to(args.device)
-    #         result = evaluate(args, model, tokenizer, prefix=prefix)
-    #         result = dict((k + '_{}'.format(global_step), v) for k, v in result.items())
-    #         results.update(result)
-    #     output_eval_file = os.path.join(args.output_dir, "checkpoint_eval_results.txt")
-    #     with open(output_eval_file, "w") as writer:
-    #         for key in sorted(results.keys()):
-    #             writer.write("%s = %s\n" % (key, str(results[key])))
-
     if args.do_predict and args.local_rank in [-1, 0]:
         # print('=================')
         if args.task_name == 'afqmc':
@@ -641,9 +532,7 @@ def main():
             logging.getLogger("transformers.modeling_utils").setLevel(logging.WARN)  # Reduce logging
             checkpoints = [x for x in checkpoints if x.split('-')[-1] == str(args.predict_checkpoints)]
         logger.info("Predict the following checkpoints: %s", checkpoints)
-        # print(checkpoints)
-        # print('--------------------')
-        # aa=input()
+
         for checkpoint in checkpoints:
             prefix = checkpoint.split('/')[-1] if checkpoint.find('checkpoint') != -1 else ""
             model = model_class.from_pretrained(checkpoint)
