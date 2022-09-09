@@ -263,10 +263,6 @@ def main():
     slstm = SlstmModel.from_pretrained('PATH/checkpoints/en', checkpoint_file='checkpoint20.pt')
     model2 = slstm.model
     model2.register_classification_head(args.task_name,num_classes=2,use_dense=False)
-    print(model2)
-    # aa=input()
-
-
 
     # Preprocessing the datasets
     if args.task_name is not None:
@@ -321,13 +317,6 @@ def main():
         texts = (
             (examples[sentence1_key],) if sentence2_key is None else (examples[sentence1_key], examples[sentence2_key])
         )
-        # print(texts)
-        # print(len(texts))
-        # print(len(texts[0]))
-        # print(len(texts[1]))
-        # print(texts[0])
-        # print(texts[1])
-        # aa=input()
         result={}
         inputids=[]
 
@@ -344,12 +333,6 @@ def main():
                 input_ids.append(2) #eos  
             inputids.append(input_ids)
         result.update({'input_ids':inputids})
-        # print(result)
-        # aa=input()
-        # result = tokenizer(*texts, padding=padding, max_length=args.max_length, truncation=True)
-        # print(result)
-        # print(result.keys())
-        # aa=input()
         if "label" in examples:
             if label_to_id is not None:
                 # Map labels to IDs (not necessary for GLUE tasks)
@@ -456,15 +439,8 @@ def main():
     for epoch in range(args.num_train_epochs):
         model2.train()
         for step, batch in enumerate(train_dataloader):
-            # print(batch)
-            # print(batch['labels'])
-            # print(batch['labels'].size())
-            # aa=input()
-            # outputs = model(**batch)
             h, _, _, g = model2(batch['input_ids'],classification_head_name=args.task_name)
-            print(g.size())
             loss = loss_fct(g , batch['labels'])
-            # loss = outputs.loss
             loss = loss / args.gradient_accumulation_steps
             accelerator.backward(loss)
             if step % args.gradient_accumulation_steps == 0 or step == len(train_dataloader) - 1:
@@ -481,7 +457,6 @@ def main():
         for step, batch in enumerate(eval_dataloader):
             # outputs = model(**batch)
             h, _, _, g = model2(batch['input_ids'],classification_head_name=args.task_name)
-            # predictions = outputs.logits.argmax(dim=-1) if not is_regression else outputs.logits.squeeze()
             predictions = g.argmax(dim=-1) if not is_regression else outputs.logits.squeeze()
             metric.add_batch(
                 predictions=accelerator.gather(predictions),
