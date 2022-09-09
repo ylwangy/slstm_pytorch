@@ -1,3 +1,6 @@
+Pytorch version of [sentence-state LSTM](https://aclanthology.org/P18-1030.pdf) and use it for language model [pre-training](https://arxiv.org/pdf/2209.03834.pdf)
+
+
 # Requirements and Installation
 
 * fairseq
@@ -14,3 +17,8 @@
 3. pip install . 
 
 4. preprocess dataset and run train.sh for lm pre-training
+
+
+# Acknowledgement
+
+Linyi Yang, Zhiyang Teng
