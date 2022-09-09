@@ -5,7 +5,7 @@ PEAK_LR=0.0005         # Peak learning rate, adjust as needed
 TOKENS_PER_SAMPLE=512   # Max sequence length
 MAX_POSITIONS=512       # Num. positional embeddings (usually same as above)
 MAX_SENTENCES=48        # Number of sequences per batch (batch size)
-UPDATE_FREQ=4          # Increase the batch size 16x
+UPDATE_FREQ=4          # Increase the batch size
 DECAY=0.01
 
 DATA_DIR=./hf-wiki-books
