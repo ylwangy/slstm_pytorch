@@ -403,12 +403,7 @@ class SlstmClassificationHead(nn.Module):
         self.out_proj = apply_quant_noise_(
             nn.Linear(inner_dim, num_classes), q_noise, qn_block_size
         )
-        # if do_spectral_norm:
-        #     if q_noise != 0:
-        #         raise NotImplementedError(
-        #             "Attempting to use Spectral Normalization with Quant Noise. This is not officially supported"
-        #         )
-        #     self.out_proj = torch.nn.utils.spectral_norm(self.out_proj)
+
 
     def forward(self, features, **kwargs):
         # x = features[:, 0, :]  # take <s> token (equiv. to [CLS])
@@ -470,8 +465,6 @@ class SlstmEncoder(FairseqEncoder):
 
         self.encoder = self.build_encoder(args,dictionary)
         self.layernorm_embedding = LayerNorm(embed_dim)
-
-
 
             
         self.lm_head = self.build_lm_head(embed_dim=args.encoder_embed_dim,output_dim=len(dictionary),activation_fn=args.activation_fn,weight=(self.embed_tokens.weight)) 
@@ -710,7 +703,7 @@ class SLSTM_block(nn.Module):
         ]
 
         mask_softmax_score = -mask.float() * 1e25  # 0.0  #32,420
-        mask_softmax_score_expanded = torch.unsqueeze(mask_softmax_score, dim=2).type(torch.cuda.HalfTensor)  #32,420,1
+        mask_softmax_score_expanded = torch.unsqueeze(mask_softmax_score, dim=2).type(torch.cuda.HalfTensor) 
 
         for layer_idx in range(self.num_layers):
             # print(word_h.size())
@@ -939,43 +932,4 @@ def slstm1792_mt_architecture(args):
     args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 1792)
     args.mt = getattr(args, "mt", True)
     base_architecture(args)
-
-# @register_model_architecture("slstm", "slstm_pos")
-# def slstm_pos_architecture(args):
-#     args.pos_h2g = getattr(args, "pos_h2g", False)
-#     args.pos_g2h = getattr(args, "pos_g2h", False)
-#     base_architecture(args)
-
-# @register_model_architecture("slstm", "slstm_nopos")
-# def slstm_nopos_architecture(args):
-#     args.no_token_positional_embeddings = getattr(args, "no_token_positional_embeddings", True)
-#     args.pos_h2g = getattr(args, "pos_h2g", False)
-#     args.pos_g2h = getattr(args, "pos_g2h", False)
-#     base_architecture(args)
-
-
-# @register_model_architecture("slstm", "slstm_g2h")
-# def slstm_g2h_architecture(args):
-#     args.pos_g2h = getattr(args, "pos_g2h", True)
-#     base_architecture(args)
-
-# @register_model_architecture("slstm", "slstm_1792_nonorm")
-# def slstm_1792_nonorm_architecture(args):
-#     args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 1792)
-#     args.use_layer_norm = getattr(args, "use_layer_norm", False)
-#     base_architecture(args)
-
-# @register_model_architecture("slstm", "slstm_1792_nonorm_nonoise")
-# def slstm_1792_nonorm_nonoise_architecture(args):
-#     args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 1792)
-#     args.use_layer_norm = getattr(args, "use_layer_norm", False)
-#     args.use_noise = getattr(args, "use_noise", False)
-#     base_architecture(args)
-
-# @register_model_architecture("slstm", "slstm_1792_nonorm_10l")
-# def slstm_1792_nonorm_10l_architecture(args):
-#     args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 1792)
-#     args.use_layer_norm = getattr(args, "use_layer_norm", False)
-#     args.encoder_layers = getattr(args, "encoder_layers", 10)
-#     base_architecture(args)
 
