@@ -4,7 +4,7 @@ we use [Sentencepiece](https://github.com/google/sentencepiece) as tokenizer
 giga_wiki_news_cn_nospecial.model and wiki_books_openweb_nospecial.model
 
 # output vocabulary
-vocab_cn.txt 及 vocab_en.txt 
+vocab_cn.txt and vocab_en.txt 
 
 
 # training scripts
