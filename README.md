@@ -29,13 +29,6 @@ see corresponding directories
 
 ## Cite
 
-      @article{zhang2018sentence,
-        title={Sentence-state lstm for text representation},
-        author={Zhang, Yue and Liu, Qi and Song, Linfeng},
-        journal={arXiv preprint arXiv:1805.02474},
-        year={2018}
-      }
-
       @article{wang2022pre,
         title={Pre-Training a Graph Recurrent Network for Language Representation},
         author={Wang, Yile and Yang, Linyi and Teng, Zhiyang and Zhou, Ming and Zhang, Yue},
