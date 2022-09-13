@@ -1,4 +1,4 @@
-## Pytorch version of [sentence-state LSTM](https://aclanthology.org/P18-1030.pdf) and use it for [language model pre-training](https://arxiv.org/pdf/2209.03834.pdf)
+### Pytorch version of [sentence-state LSTM](https://aclanthology.org/P18-1030.pdf) and use it for [language model pre-training](https://arxiv.org/pdf/2209.03834.pdf)
 
 
 ## Requirements and Installation
@@ -26,9 +26,9 @@ see corresponding directories
 
 ## Cite
 
-@article{wang2022pre,
-  title={Pre-Training a Graph Recurrent Network for Language Representation},
-  author={Wang, Yile and Yang, Linyi and Teng, Zhiyang and Zhou, Ming and Zhang, Yue},
-  journal={arXiv preprint arXiv:2209.03834},
-  year={2022}
-}
+      @article{wang2022pre,
+        title={Pre-Training a Graph Recurrent Network for Language Representation},
+        author={Wang, Yile and Yang, Linyi and Teng, Zhiyang and Zhou, Ming and Zhang, Yue},
+        journal={arXiv preprint arXiv:2209.03834},
+        year={2022}
+      }
