@@ -1,5 +1,8 @@
-### Pytorch version of [sentence-state LSTM](https://aclanthology.org/P18-1030.pdf) and use it for [language model pre-training](https://arxiv.org/pdf/2209.03834.pdf)
+### Pytorch version of sentence-state LSTM and use it for language model pre-training.
 
+[Sentence-State LSTM for Text Representation](https://aclanthology.org/P18-1030.pdf)
+
+[pre-training a graph recurrent network for language representation](https://arxiv.org/pdf/2209.03834.pdf)
 
 ## Requirements and Installation
 
