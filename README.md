@@ -2,7 +2,7 @@
 
 [Sentence-State LSTM for Text Representation](https://aclanthology.org/P18-1030.pdf)
 
-[pre-training a graph recurrent network for language representation](https://arxiv.org/pdf/2209.03834.pdf)
+[Pre-Training a Graph Recurrent Network for Language Representation](https://arxiv.org/pdf/2209.03834.pdf)
 
 ## Requirements and Installation
 
@@ -28,6 +28,13 @@ see corresponding directories
 
 
 ## Cite
+
+      @article{zhang2018sentence,
+        title={Sentence-state lstm for text representation},
+        author={Zhang, Yue and Liu, Qi and Song, Linfeng},
+        journal={arXiv preprint arXiv:1805.02474},
+        year={2018}
+      }
 
       @article{wang2022pre,
         title={Pre-Training a Graph Recurrent Network for Language Representation},
