@@ -1,14 +1,14 @@
-Pytorch version of [sentence-state LSTM](https://aclanthology.org/P18-1030.pdf) and use it for [language model pre-training](https://arxiv.org/pdf/2209.03834.pdf)
+## Pytorch version of [sentence-state LSTM](https://aclanthology.org/P18-1030.pdf) and use it for [language model pre-training](https://arxiv.org/pdf/2209.03834.pdf)
 
 
-# Requirements and Installation
+## Requirements and Installation
 
 * fairseq
 * transformers
 * sentencepiece
 
 
-# Step
+## Step
 
 1. we follow [fairseq](https://github.com/pytorch/fairseq) for pre-training language model
 
@@ -19,11 +19,16 @@ Pytorch version of [sentence-state LSTM](https://aclanthology.org/P18-1030.pdf) 
 4. preprocess dataset and run train.sh for lm pre-training
 
 
-# Checkpoints and usage
+## Checkpoints and usage
 
 see corresponding directories
 
 
-# Acknowledgement
+## Cite
 
-Linyi Yang, Zhiyang Teng
+@article{wang2022pre,
+  title={Pre-Training a Graph Recurrent Network for Language Representation},
+  author={Wang, Yile and Yang, Linyi and Teng, Zhiyang and Zhou, Ming and Zhang, Yue},
+  journal={arXiv preprint arXiv:2209.03834},
+  year={2022}
+}
