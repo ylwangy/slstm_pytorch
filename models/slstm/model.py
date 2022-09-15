@@ -200,8 +200,7 @@ class SlstmModel(FairseqEncoderModel):
             features_only = True
 
         x, xleft, xright, extra = self.encoder(src_tokens, features_only, return_all_hiddens, **kwargs)
-        # print(x.size())
-        # print(extra.size())
+
         if classification_head_name is not None:
             extra = self.classification_heads[classification_head_name](extra)
 
@@ -229,11 +228,12 @@ class SlstmModel(FairseqEncoderModel):
                         name, num_classes, prev_num_classes, inner_dim, prev_inner_dim
                     )
                 )
+                
         self.classification_heads[name] = SlstmClassificationHead(
             input_dim=self.args.encoder_embed_dim,
             inner_dim=inner_dim or self.args.encoder_embed_dim,
             num_classes=num_classes,
-            use_dense = use_dense,
+            use_dense=use_dense,
             activation_fn=self.args.pooler_activation_fn,
             pooler_dropout=self.args.pooler_dropout,
             q_noise=self.args.quant_noise_pq,
@@ -267,7 +267,6 @@ class SlstmModel(FairseqEncoderModel):
             **kwargs,
         )
 
-        # logger.info(x["args"])
         return SlstmHubInterface(x["args"], x["task"], x["models"][0])
 
     def upgrade_state_dict_named(self, state_dict, name):
@@ -400,7 +399,7 @@ class SlstmClassificationHead(nn.Module):
 
     def forward(self, features, **kwargs):
         # x = features[:, 0, :]  # take <s> token (equiv. to [CLS])
-        ############################## already use global node
+        ###already use global node
         if self.use_dense:
             x = self.dropout(features)
             x = self.dense(x)
@@ -423,27 +422,19 @@ class SlstmEncoder(FairseqEncoder):
         self.args = args
         embed_tokens = self.build_embedding(len(dictionary), args.encoder_embed_dim, dictionary.pad())
         self.embed_tokens = embed_tokens
-        
-        # self.emb_init()
-        
+         
         self.dropout = args.dropout
-        # self.encoder_layerdrop = args.encoder_layerdrop
-        self.slstm_kernel_size = args.slstm_kernel_size
-
+        self.slstm_kernel_size = args.slstm_kernel_size # window size for node neighbors
         self.padding_idx = embed_tokens.padding_idx
         self.pos_g2h = args.pos_g2h
-        
         self.pos_h2g = args.pos_h2g
         self.use_layer_norm = args.use_layer_norm
-        self.mt = args.mt
-        
-        self.pos_input = args.pos_input
+        self.mt = args.mt  # use for multi-task
+        self.pos_input = args.pos_input # use position embedding
 
         embed_dim = embed_tokens.embedding_dim
 
-
         self.max_source_positions = args.max_source_positions
-
 
         self.embed_positions = (
             PositionalEmbedding(
@@ -499,6 +490,7 @@ class SlstmEncoder(FairseqEncoder):
 
         x_left = None
         x_right = None
+        
         if not features_only:
             x_raw = self.output_layer(x, masked_tokens=masked_tokens)
             
@@ -506,7 +498,7 @@ class SlstmEncoder(FairseqEncoder):
                 x_left = self.output_layer_left(x, masked_tokens=masked_tokens)
                 x_right = self.output_layer_right(x, masked_tokens=masked_tokens)
             return x_raw,x_left,x_right, g
-        # print(x.size())  #masksize V
+
         return x,None,None, g
 
 
@@ -608,7 +600,7 @@ class SLSTM_block(nn.Module):
         self.WU_g_fo = nn.Linear(2 * self.hidden_size, 2 * self.hidden_size, bias=True)
         self.WU_g_f_ = nn.Linear(2 * self.hidden_size, 1 * self.hidden_size, bias=True)
         
-        self.ln=args.ln
+        self.ln = args.ln # layer normalization
 
         if self.ln:
             self.i_norm = LayerNorm(self.hidden_size)
@@ -682,8 +674,8 @@ class SLSTM_block(nn.Module):
         Ux = self.U_t_ilrfsou(word_x)
         word_c = word_h
         
-        sequence_mask = torch.unsqueeze(1 - mask.type(torch.cuda.HalfTensor), dim=2)  #1.0     32,420,1
-        sequence_lengths = torch.sum(sequence_mask, dim=1)# len1,...len_bsz  32,1
+        sequence_mask = torch.unsqueeze(1 - mask.type(torch.cuda.HalfTensor), dim=2)  
+        sequence_lengths = torch.sum(sequence_mask, dim=1)# len1,...,len_bsz  
 
         dummy_g_h = torch.sum(word_h, dim=1) / sequence_lengths  # [bsz, H]
         dummy_g_c = torch.sum(word_c, dim=1) / sequence_lengths  # [bsz, H]
@@ -695,10 +687,12 @@ class SLSTM_block(nn.Module):
             for step in range(self.slstm_kernel_size)
         ]
 
-        mask_softmax_score = -mask.float() * 1e25  # 0.0  #32,420
+        mask_softmax_score = -mask.float() * 1e25  
         mask_softmax_score_expanded = torch.unsqueeze(mask_softmax_score, dim=2).type(torch.cuda.HalfTensor) 
 
         for layer_idx in range(self.num_layers):
+            ##########################################################################
+            ### token node update
             
             word_h_before = [(self.get_h_before(padding_list[step], word_h, step + 1)* sequence_mask).view(-1, hidden_size) for step in range(self.slstm_kernel_size)]
             word_h_before = sum(word_h_before)
@@ -771,7 +765,8 @@ class SLSTM_block(nn.Module):
             word_c = word_c * sequence_mask
 
             ##########################################################################
-
+            ### sentence node update
+            
             word_h_avg = torch.sum(word_h, dim=1) / sequence_lengths
 
             dummy_fo_gates = self.WU_g_fo(torch.cat([dummy_g_h, word_h_avg], dim=1))
