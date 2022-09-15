@@ -8,7 +8,7 @@ MAX_SENTENCES=32        # Number of sequences per batch (batch size)
 UPDATE_FREQ=1           # gradient accumulation
 DECAY=0.01              # learning rate decay
 
-DATA_DIR=./hf-wiki-books
+DATA_DIR=./wiki-books
 
 python -m torch.distributed.launch --nproc_per_node=8 --master_port 29529 \
     $(which fairseq-train) --fp16 $DATA_DIR \
