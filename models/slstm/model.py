@@ -391,7 +391,6 @@ class SlstmClassificationHead(nn.Module):
         self.use_dense = use_dense
         self.activation_fn = utils.get_activation_fn(activation_fn)
         self.dropout = nn.Dropout(p=pooler_dropout)
-        # self.classifier = nn.Linear(input_dim, num_classes)
         self.out_proj = apply_quant_noise_(
             nn.Linear(inner_dim, num_classes), q_noise, qn_block_size
         )
@@ -843,29 +842,6 @@ def slstm1792_architecture(args):
     args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 1792)
     base_architecture(args)
 
-
-@register_model_architecture("slstm", "slstm1792_pos_input")
-def slstm1792_pos_input_architecture(args):
-    args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 1792)
-    args.pos_h2g = getattr(args, "pos_h2g", False)
-    args.pos_g2h = getattr(args, "pos_g2h", False)
-    args.pos_input = getattr(args, "pos_input", True)
-    base_architecture(args)
-
-@register_model_architecture("slstm", "slstm1792_nopos")
-def slstm1792_nopos_architecture(args):
-    args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 1792)
-    args.pos_h2g = getattr(args, "pos_h2g", False)
-    args.pos_g2h = getattr(args, "pos_g2h", False)
-    base_architecture(args)
-
-
-@register_model_architecture("slstm", "slstm1792_ln")
-def slstm1792_ln_architecture(args):
-    args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 1792)
-    args.ln = getattr(args, "ln", True)
-    base_architecture(args)
-
 @register_model_architecture("slstm", "slstm1792_ln_posinput")
 def slstm1792_ln_posinput_architecture(args):
     args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 1792)
@@ -884,40 +860,3 @@ def slstm1280_ln_posinput_layer24_architecture(args):
     args.pos_input = getattr(args, "pos_input", True)
     args.encoder_layers = getattr(args, "encoder_layers", 24)
     base_architecture(args)
-
-
-@register_model_architecture("slstm", "slstm2048")
-def slstm2048_architecture(args):
-    args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 2048)
-    base_architecture(args)
-
-@register_model_architecture("slstm", "slstm1536_k3")
-def slstm1536_k3_architecture(args):
-    args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 1536)
-    args.slstm_kernel_size = getattr(args, "slstm_kernel_size", 3)
-    base_architecture(args)
-
-@register_model_architecture("slstm", "slstm1792_k3")
-def slstm1792_k3_architecture(args):
-    args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 1792)
-    args.slstm_kernel_size = getattr(args, "slstm_kernel_size", 3)
-    base_architecture(args)
-
-@register_model_architecture("slstm", "slstm2304")
-def slstm2304_architecture(args):
-    args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 2304)
-    base_architecture(args)
-
-
-@register_model_architecture("slstm", "slstm1280_mt")
-def slstm1280_mt_architecture(args):
-    args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 1280)
-    args.mt = getattr(args, "mt", True)
-    base_architecture(args)
-
-@register_model_architecture("slstm", "slstm1792_mt")
-def slstm1792_mt_architecture(args):
-    args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 1792)
-    args.mt = getattr(args, "mt", True)
-    base_architecture(args)
-
