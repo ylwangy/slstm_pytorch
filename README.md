@@ -27,7 +27,8 @@
 see corresponding directories
 
 
-## Cite
+## Citation
+
 
       @article{wang2022pre,
         title={Pre-Training a Graph Recurrent Network for Language Representation},
