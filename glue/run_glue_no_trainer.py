@@ -251,14 +251,8 @@ def main():
         config=config,
     )
 
-    # s = spm.SentencePieceProcessor(model_file='/3tdev/yl/slstm/lstm/tokenizer/wiki_books_openweb_nospecial.model')
-    # s.encode('New York', out_type=str, enable_sampling=True, alpha=0.1, nbest_size=-1)
-
-
-
     tokenizer2 = spm.SentencePieceProcessor()
     tokenizer2.Load('PATH/tokenizer/wiki_books_openweb_nospecial.model')
-
 
     slstm = SlstmModel.from_pretrained('PATH/checkpoints/en', checkpoint_file='checkpoint20.pt')
     model2 = slstm.model
@@ -313,7 +307,6 @@ def main():
 
     def preprocess_function(examples):
         # Tokenize the texts
-        # print('-----')
         texts = (
             (examples[sentence1_key],) if sentence2_key is None else (examples[sentence1_key], examples[sentence2_key])
         )
@@ -341,7 +334,6 @@ def main():
                 # In all cases, rename the column to labels because the model will expect that.
                 result["labels"] = examples["label"]
         # print(result)
-        # aa=input()
         return result
 
 
