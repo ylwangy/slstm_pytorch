@@ -22,9 +22,9 @@
 4. preprocess dataset and run train.sh for lm pre-training
 
 
-## Checkpoints and usage
+## Checkpoints and Usage
 
-see corresponding directories
+See corresponding directories
 
 
 ## Citation
