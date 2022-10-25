@@ -1,4 +1,4 @@
-### Pytorch version of sentence-state LSTM and use it for language model pre-training.
+### Pytorch version of sentence-state LSTM and how to use it for masked language model pre-training.
 
 [Sentence-State LSTM for Text Representation](https://aclanthology.org/P18-1030.pdf)
 
@@ -35,3 +35,7 @@ see corresponding directories
         journal={arXiv preprint arXiv:2209.03834},
         year={2022}
       }
+
+##Contact
+
+If you have any question, please create a issue or contact to the authors.
