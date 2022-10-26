@@ -4,6 +4,8 @@
 
 [Pre-Training a Graph Recurrent Network for Language Representation](https://arxiv.org/pdf/2209.03834.pdf)
 
+![](slstm_mlm.PNG)
+
 ## Requirements and Installation
 
 * fairseq
